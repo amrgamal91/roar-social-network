@@ -16,7 +16,7 @@ const theme = createMuiTheme(themeFile);
 
 // instal jwt-decode library to decode the token
 let authenticated;
-const token = localStorage.getItem("FBIdToken");
+const token = localStorage.getItem("FireBaseIdToken");
 console.log("token is : " + token);
 
 if (token) {

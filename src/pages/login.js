@@ -63,8 +63,8 @@ class login extends Component {
         userData
       )
       .then(res => {
-        console.log(`here is the data from login ${res.data}`);
-        localStorage.setItem("FBIdToken", `Bearer ${res.data.token}`);
+        console.log(`here is the data from login ${res.data.idtoken}`);
+        localStorage.setItem("FireBaseIdToken", `Bearer ${res.data.idtoken}`);
         this.setState({ loading: false });
         this.props.history.push("/");
       })
