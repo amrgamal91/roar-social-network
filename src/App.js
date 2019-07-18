@@ -9,26 +9,27 @@ import home from "./pages/home";
 import login from "./pages/login";
 import signup from "./pages/signup";
 import NavBar from "./components/NavBar";
+import themeFile from "./util/theme";
+import jwtDecode from "jwt-decode";
+import AuthRoute from "./util/AuthRoute";
+const theme = createMuiTheme(themeFile);
 
-const theme = createMuiTheme({
-  palette: {
-    primary: {
-      light: "#4dabf5",
-      main: "#2196f3",
-      dark: "#1769aa",
-      contrastText: "#fff"
-    },
-    secondary: {
-      light: "#f73378",
-      main: "#f50057",
-      dark: "#ab003c",
-      contrastText: "#000"
-    }
-  },
-  typography: {
-    useNextVariants: true
+// instal jwt-decode library to decode the token
+let authenticated;
+const token = localStorage.getItem("FBIdToken");
+console.log("token is : " + token);
+
+if (token) {
+  const decodedToken = jwtDecode(token);
+  console.log("here is the decoded token : ", decodedToken);
+  if (decodedToken.exp * 1000 < Date.now()) {
+    window.location.href = "./login";
+    authenticated = false;
+  } else {
+    authenticated = true;
   }
-});
+}
+
 class App extends Component {
   render() {
     return (
@@ -39,8 +40,18 @@ class App extends Component {
             <div className="container">
               <Switch>
                 <Route exact path="/" component={home} />
-                <Route exact path="/login" component={login} />
-                <Route exact path="/signup" component={signup} />
+                <AuthRoute
+                  exact
+                  path="/login"
+                  component={login}
+                  authenticated={authenticated}
+                />
+                <AuthRoute
+                  exact
+                  path="/signup"
+                  component={signup}
+                  authenticated={authenticated}
+                />
               </Switch>
             </div>
           </Router>
