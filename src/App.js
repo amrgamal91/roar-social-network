@@ -9,6 +9,7 @@ import home from "./pages/home";
 import login from "./pages/login";
 import signup from "./pages/signup";
 import NavBar from "./components/NavBar";
+
 const theme = createMuiTheme({
   palette: {
     primary: {

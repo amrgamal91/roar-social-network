@@ -23,7 +23,7 @@ export class home extends Component {
     let recentScreamsMarkup = this.state.screams ? (
       this.state.screams.map(scream => (
         // <p key={scream.screamId}>{scream.body}</p>
-        <Scream scream={scream} />
+        <Scream key={scream.screamId} scream={scream} />
       ))
     ) : (
       <p>Loading...</p>
