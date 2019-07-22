@@ -36,6 +36,7 @@ export const logoutUser = () => dispatch => {
   delete axios.defaults.headers.common["Authorization"];
   dispatch({ type: SET_UNAUTHENTICATED });
 };
+
 export const getUserData = () => dispatch => {
   dispatch({ type: LOADING_USER });
   axios
@@ -70,6 +71,19 @@ export const signupUser = (newUserData, history) => dispatch => {
         payload: err.response.data
       });
     });
+};
+
+export const uploadImage = formData => dispatch => {
+  dispatch({ type: LOADING_USER });
+  axios
+    .post(
+      "https://us-central1-socialapp-dfb2e.cloudfunctions.net/api/user/image",
+      formData
+    )
+    .then(res => {
+      dispatch(getUserData());
+    })
+    .catch(err => console.log(err));
 };
 
 const setAuthorizationHeader = token => {
