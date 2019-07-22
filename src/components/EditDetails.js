@@ -12,6 +12,8 @@ import IconButton from "@material-ui/core/IconButton";
 import EditIcon from "@material-ui/icons/Edit";
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
+import CustomButton from "../util/CustomButton";
+
 const styles = {
   button: { float: "right" },
   paper: {
@@ -98,11 +100,13 @@ class EditDetails extends Component {
     const { classes } = this.props;
     return (
       <Fragment>
-        <Tooltip title="Edit details" placement="top">
-          <IconButton onClick={this.handleOpen} className={classes.button}>
-            <EditIcon color="primary" />
-          </IconButton>
-        </Tooltip>
+        <CustomButton
+          tip="Edit details"
+          onClick={this.handleOpen}
+          btnClassName={classes.button}
+        >
+          <EditIcon color="primary" />
+        </CustomButton>
         <Dialog
           open={this.state.open}
           onClose={this.handleClose}
@@ -116,7 +120,7 @@ class EditDetails extends Component {
                 name="bio"
                 type="text"
                 label="Bio"
-                nultiline
+                multiline
                 rows="3"
                 placeholder="A Short bio about yourself"
                 className={classes.textField}
