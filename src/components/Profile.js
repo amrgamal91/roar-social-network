@@ -187,7 +187,6 @@ const mapActionsToProps = { logoutUser, uploadImage };
 Profile.propTypes = {
   user: PropTypes.object.isRequired,
   uploadImage: PropTypes.func.isRequired,
-  user: PropTypes.object.isRequired,
   classes: PropTypes.object.isRequired
 };
 
