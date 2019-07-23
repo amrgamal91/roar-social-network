@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from "react";
 import withStyles from "@material-ui/core/styles/withStyles";
 import PropTypes from "prop-types";
-import MyButton from "../util/CustomButton";
+import CustomButton from "../util/CustomButton";
 
 // MUI Stuff
 import Button from "@material-ui/core/Button";
@@ -40,13 +40,13 @@ class DeleteScream extends Component {
 
     return (
       <Fragment>
-        <MyButton
+        <CustomButton
           tip="Delete Scream"
           onClick={this.handleOpen}
           btnClassName={classes.deleteButton}
         >
           <DeleteOutline color="secondary" />
-        </MyButton>
+        </CustomButton>
         <Dialog
           open={this.state.open}
           onClose={this.handleClose}

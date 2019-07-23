@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
 import withStyles from "@material-ui/core/styles/withStyles";
-import MyButton from "../util/CustomButton";
+import CustomButton from "../util/CustomButton";
 // MUI Stuff
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
@@ -108,22 +108,22 @@ class PostScream extends Component {
     } = this.props;
     return (
       <Fragment>
-        <MyButton onClick={this.handleOpen} tip="Post a Scream!">
+        <CustomButton onClick={this.handleOpen} tip="Post a Scream!">
           <AddIcon />
-        </MyButton>
+        </CustomButton>
         <Dialog
           open={this.state.open}
           onClose={this.handleClose}
           fullWidth
           maxWidth="sm"
         >
-          <MyButton
+          <CustomButton
             tip="Close"
             onClick={this.handleClose}
             tipClassName={classes.closeButton}
           >
             <CloseIcon />
-          </MyButton>
+          </CustomButton>
           <DialogTitle>Post a new scream</DialogTitle>
           <DialogContent>
             <form onSubmit={this.handleSubmit}>

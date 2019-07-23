@@ -17,6 +17,7 @@ import { likeScream, unlikeScream } from "../redux/actions/dataAction";
 import PropTypes from "prop-types";
 import CustomButton from "../util/CustomButton";
 import DeleteScream from "./DeleteScream";
+import ScreamDialog from "./ScreamDialog";
 const styles = {
   card: {
     position: "relative",
@@ -112,6 +113,7 @@ class Scream extends Component {
             <ChatIcon color="primary" />
           </CustomButton>
           <span>{commentCount} Comments</span>
+          <ScreamDialog screamId={screamId} userHandle={userHandle} />
         </CardContent>
       </Card>
     );
