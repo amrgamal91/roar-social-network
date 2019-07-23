@@ -14,9 +14,9 @@ import FavoriteIcon from "@material-ui/icons/Favorite";
 import FavoriteBorder from "@material-ui/icons/FavoriteBorder";
 
 import { connect } from "react-redux";
-import { likeScream, unlikeScream } from "../redux/actions/dataAction";
+import { likeScream, unlikeScream } from "../../redux/actions/dataAction";
 import PropTypes from "prop-types";
-import CustomButton from "../util/CustomButton";
+import CustomButton from "../../util/CustomButton";
 import DeleteScream from "./DeleteScream";
 import ScreamDialog from "./ScreamDialog";
 const styles = {

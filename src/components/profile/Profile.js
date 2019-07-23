@@ -18,8 +18,8 @@ import EditIcon from "@material-ui/icons/Edit";
 import KeyboardReturn from "@material-ui/icons/KeyboardReturn";
 //Redux
 import { connect } from "react-redux";
-import { logoutUser, uploadImage } from "../redux/actions/userActions";
-import CustomButton from "../util/CustomButton";
+import { logoutUser, uploadImage } from "../../redux/actions/userActions";
+import CustomButton from "../../util/CustomButton";
 
 const styles = {
   paper: {
