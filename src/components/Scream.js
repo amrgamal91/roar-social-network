@@ -3,6 +3,7 @@ import withStyles from "@material-ui/core/styles/withStyles";
 import { Link } from "react-router-dom";
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
+import LikeButton from "./LikeButton";
 //MUI Styff
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
@@ -43,12 +44,12 @@ class Scream extends Component {
       return true;
     else return false;
   };
-  likeScream = () => {
-    this.props.likeScream(this.props.scream.screamId);
-  };
-  unlikeScream = () => {
-    this.props.unlikeScream(this.props.scream.screamId);
-  };
+  // likeScream = () => {
+  //   this.props.likeScream(this.props.scream.screamId);
+  // };
+  // unlikeScream = () => {
+  //   this.props.unlikeScream(this.props.scream.screamId);
+  // };
   render() {
     dayjs.extend(relativeTime);
     const {
@@ -67,21 +68,7 @@ class Scream extends Component {
         credentials: { handle }
       }
     } = this.props; // = this.props.classes
-    const likeButton = !authenticated ? (
-      <CustomButton tip="like">
-        <Link to="/login">
-          <FavoriteBorder color="primary" />
-        </Link>
-      </CustomButton>
-    ) : this.likedScream() ? (
-      <CustomButton tip="UndoLike" onClick={this.unlikeScream}>
-        <FavoriteIcon color="primary" />
-      </CustomButton>
-    ) : (
-      <CustomButton tip="Like" onClick={this.likeScream}>
-        <FavoriteBorder color="primary" />
-      </CustomButton>
-    );
+
     const deleteButton =
       authenticated && userHandle === handle ? (
         <DeleteScream screamId={screamId} />
@@ -107,7 +94,7 @@ class Scream extends Component {
             {dayjs(createdAt).fromNow()}
           </Typography>
           <Typography variant="body1">{body}</Typography>
-          {likeButton}
+          <LikeButton screamId={screamId} />
           <span>{likeCount} Likes</span>
           <CustomButton tip="Comments">
             <ChatIcon color="primary" />

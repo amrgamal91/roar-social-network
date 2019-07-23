@@ -4,6 +4,8 @@ import withStyles from "@material-ui/core/styles/withStyles";
 import CustomButton from "../util/CustomButton";
 import dayjs from "dayjs";
 import { Link } from "react-router-dom";
+import LikeButton from "./LikeButton";
+
 // MUI Stuff
 import Dialog from "@material-ui/core/Dialog";
 import DialogContent from "@material-ui/core/DialogContent";
@@ -117,6 +119,7 @@ class ScreamDialog extends Component {
           </Typography>
           <hr className={classes.invisibleSeparator} />
           <Typography variant="body1">{body}</Typography>
+          <LikeButton screamId={screamId} />
           <span>{likeCount} likes</span>
           <CustomButton tip="comments">
             <ChatIcon color="primary" />
