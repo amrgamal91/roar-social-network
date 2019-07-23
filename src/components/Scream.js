@@ -16,8 +16,10 @@ import { connect } from "react-redux";
 import { likeScream, unlikeScream } from "../redux/actions/dataAction";
 import PropTypes from "prop-types";
 import CustomButton from "../util/CustomButton";
+import DeleteScream from "./DeleteScream";
 const styles = {
   card: {
+    position: "relative",
     display: "flex",
     marginBottom: 20
   },
@@ -55,11 +57,14 @@ class Scream extends Component {
         createdAt,
         userImage,
         userHandle,
-        // screamId,
+        screamId,
         likeCount,
         commentCount
       },
-      user: { authenticated }
+      user: {
+        authenticated,
+        credentials: { handle }
+      }
     } = this.props; // = this.props.classes
     const likeButton = !authenticated ? (
       <CustomButton tip="like">
@@ -76,6 +81,10 @@ class Scream extends Component {
         <FavoriteBorder color="primary" />
       </CustomButton>
     );
+    const deleteButton =
+      authenticated && userHandle === handle ? (
+        <DeleteScream screamId={screamId} />
+      ) : null;
     return (
       <Card className={classes.card}>
         <CardMedia
@@ -92,6 +101,7 @@ class Scream extends Component {
           >
             {userHandle}
           </Typography>
+          {deleteButton}
           <Typography variant="body2" color="secondary">
             {dayjs(createdAt).fromNow()}
           </Typography>
