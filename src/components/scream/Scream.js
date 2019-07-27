@@ -42,12 +42,7 @@ class Scream extends Component {
       return true;
     else return false;
   };
-  // likeScream = () => {
-  //   this.props.likeScream(this.props.scream.screamId);
-  // };
-  // unlikeScream = () => {
-  //   this.props.unlikeScream(this.props.scream.screamId);
-  // };
+
   render() {
     dayjs.extend(relativeTime);
     const {
@@ -82,7 +77,7 @@ class Scream extends Component {
           <Typography
             variant="h5"
             component={Link}
-            to={`https://us-central1-socialapp-dfb2e.cloudfunctions.net/api/users/${userHandle}`}
+            to={`/user/${userHandle}`}
             color="primary"
           >
             {userHandle}
@@ -98,18 +93,21 @@ class Scream extends Component {
             <ChatIcon color="primary" />
           </CustomButton>
           <span>{commentCount} Comments</span>
-          <ScreamDialog screamId={screamId} userHandle={userHandle} />
+          <ScreamDialog
+            screamId={screamId}
+            userHandle={userHandle}
+            openDialog={this.props.openDialog}
+          />
         </CardContent>
       </Card>
     );
   }
 }
 Scream.propTypes = {
-  likeScream: PropTypes.func.isRequired,
-  unlikeScream: PropTypes.func.isRequired,
   user: PropTypes.object.isRequired,
   scream: PropTypes.object.isRequired,
-  classes: PropTypes.object.isRequired
+  classes: PropTypes.object.isRequired,
+  openDialog: PropTypes.bool
 };
 
 const mapStateToProps = state => ({

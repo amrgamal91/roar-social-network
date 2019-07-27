@@ -8,11 +8,17 @@ import createMuiTheme from "@material-ui/core/styles/createMuiTheme";
 import { Provider } from "react-redux";
 import store from "./redux/store";
 import { SET_AUTHENTICATED } from "./redux/types";
-import { logoutUser, getUserData } from "./redux/actions/userActions";
+import {
+  logoutUser,
+  getUserData,
+  loginUser
+} from "./redux/actions/userActions";
 // Pages
 import home from "./pages/home";
 import login from "./pages/login";
 import signup from "./pages/signup";
+import user from "./pages/user";
+
 import NavBar from "./components/layout/NavBar";
 import themeFile from "./util/theme";
 import jwtDecode from "jwt-decode";
@@ -50,8 +56,15 @@ class App extends Component {
             <div className="container">
               <Switch>
                 <Route exact path="/" component={home} />
+                loginUser
                 <AuthRoute exact path="/login" component={login} />
                 <AuthRoute exact path="/signup" component={signup} />
+                <Route exact path="/user/:handle" component={user} />
+                <Route
+                  exact
+                  path="/users/:handle/scream/:screamId"
+                  component={user}
+                />
               </Switch>
             </div>
           </Router>

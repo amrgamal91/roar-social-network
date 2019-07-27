@@ -112,7 +112,7 @@ class Profile extends Component {
           <div className="profile-details">
             <MuiLink
               component={Link}
-              to={`/users/${handle}`}
+              to={`/user/${handle}`}
               color="primary"
               variant="h5"
             >
@@ -155,7 +155,7 @@ class Profile extends Component {
           <div className={classes.buttons}>
             <Button
               variant="contained"
-              color="priamry"
+              color="primary"
               component={Link}
               to="/login"
             >
