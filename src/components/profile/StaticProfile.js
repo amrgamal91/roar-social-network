@@ -70,7 +70,7 @@ const StaticProfile = props => {
         <div className="profile-details">
           <MuiLink
             component={Link}
-            to={`/user/${this.props.handle}`}
+            to={`/user/${props.handle}`}
             // to={"/user/" + this.props.profile.handle}
             color="primary"
             variant="h5"
