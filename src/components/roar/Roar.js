@@ -1,22 +1,25 @@
+//done
 import React, { Component } from "react";
-import withStyles from "@material-ui/core/styles/withStyles";
 import { Link } from "react-router-dom";
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
 import LikeButton from "./LikeButton";
 //MUI Styff
+import withStyles from "@material-ui/core/styles/withStyles";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 import Typography from "@material-ui/core/Typography";
 import ChatIcon from "@material-ui/icons/Chat";
-
+//Redux
 import { connect } from "react-redux";
-import { likeScream, unlikeScream } from "../../redux/actions/dataAction";
+import { likeRoar, unlikeRoar } from "../../redux/actions/dataAction";
 import PropTypes from "prop-types";
+
 import CustomButton from "../../util/CustomButton";
-import DeleteScream from "./DeleteScream";
-import ScreamDialog from "./ScreamDialog";
+import DeleteRoar from "./DeleteRoar";
+import RoarDialog from "./RoarDialog";
+
 const styles = {
   card: {
     position: "relative",
@@ -31,13 +34,13 @@ const styles = {
     objectFit: "cover"
   }
 };
-class Scream extends Component {
-  likedScream = () => {
+
+class Roar extends Component {
+  /** */
+  likedRoar = () => {
     if (
       this.props.user.likes &&
-      this.props.user.likes.find(
-        like => like.screamId === this.props.scream.screamId
-      )
+      this.props.user.likes.find(like => like.roarId === this.props.roar.roarId)
     )
       return true;
     else return false;
@@ -45,14 +48,15 @@ class Scream extends Component {
 
   render() {
     dayjs.extend(relativeTime);
+
     const {
       classes,
-      scream: {
+      roar: {
         body,
         createdAt,
         userImage,
         userHandle,
-        screamId,
+        roarId,
         likeCount,
         commentCount
       },
@@ -60,12 +64,13 @@ class Scream extends Component {
         authenticated,
         credentials: { handle }
       }
-    } = this.props; // = this.props.classes
+    } = this.props;
 
     const deleteButton =
       authenticated && userHandle === handle ? (
-        <DeleteScream screamId={screamId} />
+        <DeleteRoar roarId={roarId} />
       ) : null;
+
     return (
       <Card className={classes.card}>
         <CardMedia
@@ -82,19 +87,25 @@ class Scream extends Component {
           >
             {userHandle}
           </Typography>
+
           {deleteButton}
+
           <Typography variant="body2" color="secondary">
             {dayjs(createdAt).fromNow()}
           </Typography>
+
           <Typography variant="body1">{body}</Typography>
-          <LikeButton screamId={screamId} />
+
+          <LikeButton roarId={roarId} />
           <span>{likeCount} Likes</span>
+
           <CustomButton tip="Comments">
             <ChatIcon color="primary" />
           </CustomButton>
           <span>{commentCount} Comments</span>
-          <ScreamDialog
-            screamId={screamId}
+
+          <RoarDialog
+            roarId={roarId}
             userHandle={userHandle}
             openDialog={this.props.openDialog}
           />
@@ -103,9 +114,10 @@ class Scream extends Component {
     );
   }
 }
-Scream.propTypes = {
+
+Roar.propTypes = {
   user: PropTypes.object.isRequired,
-  scream: PropTypes.object.isRequired,
+  roar: PropTypes.object.isRequired,
   classes: PropTypes.object.isRequired,
   openDialog: PropTypes.bool
 };
@@ -113,11 +125,13 @@ Scream.propTypes = {
 const mapStateToProps = state => ({
   user: state.user
 });
+
 const mapActionsToProps = {
-  likeScream,
-  unlikeScream
+  likeRoar,
+  unlikeRoar
 };
+
 export default connect(
   mapStateToProps,
   mapActionsToProps
-)(withStyles(styles)(Scream));
+)(withStyles(styles)(Roar));

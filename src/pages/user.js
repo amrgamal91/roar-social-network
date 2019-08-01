@@ -1,17 +1,17 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import axios from "axios";
-import Scream from "../components/scream/Scream";
+import Roar from "../components/roar/Roar";
 import Grid from "@material-ui/core/Grid";
 import StaticProfile from "../components/profile/StaticProfile";
 import { connect } from "react-redux";
 import { getUserData } from "../redux/actions/dataAction";
-import ScreamSkeleton from "../util/ScreamSkeleton";
+import RoarSkeleton from "../util/RoarSkeleton";
 import ProfileSkeleton from "../util/ProfileSkeleton";
 class user extends Component {
   state = {
     profile: null,
-    screamIdParam: null
+    roarIdParam: null
   };
 
   componentDidMount() {
@@ -21,9 +21,9 @@ class user extends Component {
     console.log("params is : " + this.props.match.params);
     console.log("props is : " + this.props);
 
-    const screamId = this.props.match.params.screamId;
+    const roarId = this.props.match.params.roarId;
 
-    if (screamId) this.setState({ screamIdParam: screamId });
+    if (roarId) this.setState({ roarIdParam: roarId });
 
     this.props.getUserData(handle);
     axios
@@ -44,18 +44,18 @@ class user extends Component {
   }
 
   render() {
-    const { screams, loading } = this.props.data;
-    const screamsMarkup = loading ? (
-      <ScreamSkeleton />
-    ) : screams === null ? (
-      <p>No Screams from this user</p>
+    const { roars, loading } = this.props.data;
+    const roarsMarkup = loading ? (
+      <RoarSkeleton />
+    ) : roars === null ? (
+      <p>No Roars from this user</p>
     ) : (
-      screams.map(scream => <Scream key={scream.screamId} scream={scream} />)
+      roars.map(roar => <Roar key={roar.roarId} roar={roar} />)
     );
     return (
       <Grid container spacing={8}>
         <Grid item sm={8} xs={12}>
-          {screamsMarkup}
+          {roarsMarkup}
         </Grid>
         <Grid item sm={4} xs={12}>
           {this.state.profile === null ? (

@@ -1,72 +1,89 @@
+/**
+ * https://redux.js.org/basics/actions
+ * example :
+ * export method =()=>dispatch=>{}  //this is called bound action creator
+ * which calls the method and then dispatch to redux store
+ * dispatch takes an action which consists of type &  payload
+ * dispatch (payload) : is the only source of information to redux store
+ */
+
 import {
-  SET_SCREAMS,
+  SET_ROARS,
   LOADING_DATA,
-  LIKE_SCREAM,
-  UNLIKE_SCREAM,
-  DELETE_SCREAM,
+  LIKE_ROAR,
+  UNLIKE_ROAR,
+  DELETE_ROAR,
   SET_ERRORS,
-  POST_SCREAM,
+  POST_ROAR,
   CLEAR_ERRORS,
   LOADING_UI,
-  SET_SCREAM,
+  SET_ROAR,
   STOP_LOADING_UI,
   SUBMIT_COMMENT
 } from "../types";
 
 import axios from "axios";
 
-// Get all screams
-export const getScreams = () => dispatch => {
+// Get all roars
+export const getRoars = () => dispatch => {
   dispatch({ type: LOADING_DATA });
   axios
-    .get("https://us-central1-socialapp-dfb2e.cloudfunctions.net/api/screams")
+    .get("https://us-central1-socialapp-dfb2e.cloudfunctions.net/api/roars")
     .then(res => {
       dispatch({
-        type: SET_SCREAMS,
+        type: SET_ROARS,
         payload: res.data
       });
     })
     .catch(err => {
       dispatch({
-        type: SET_SCREAMS,
+        type: SET_ROARS,
         payload: []
       });
     });
 };
 
-// Like a scream
-export const likeScream = screamId => dispatch => {
+/**
+ * Like Roar
+ */
+export const likeRoar = roarId => dispatch => {
   axios
     .get(
-      `https://us-central1-socialapp-dfb2e.cloudfunctions.net/api/scream/${screamId}/like`
+      `https://us-central1-socialapp-dfb2e.cloudfunctions.net/api/roar/${roarId}/like`
     )
     .then(res => {
       dispatch({
-        type: LIKE_SCREAM,
+        type: LIKE_ROAR,
         payload: res.data
       });
     })
     .catch(err => console.log(err));
 };
-// Unlike a scream
-export const unlikeScream = screamId => dispatch => {
+
+/**
+ *  Unlike a roar
+ * */
+export const unlikeRoar = roarId => dispatch => {
   axios
     .get(
-      `https://us-central1-socialapp-dfb2e.cloudfunctions.net/api/scream/${screamId}/unlike`
+      `https://us-central1-socialapp-dfb2e.cloudfunctions.net/api/roar/${roarId}/unlike`
     )
     .then(res => {
       dispatch({
-        type: UNLIKE_SCREAM,
+        type: UNLIKE_ROAR,
         payload: res.data
       });
     })
     .catch(err => console.log(err));
 };
-// Submit a comment
-export const submitComment = (screamId, commentData) => dispatch => {
+
+/**
+ * Submit a comment
+ */
+export const submitComment = (roarId, commentData) => dispatch => {
   axios
     .post(
-      `https://us-central1-socialapp-dfb2e.cloudfunctions.net/api/scream/${screamId}/comment`,
+      `https://us-central1-socialapp-dfb2e.cloudfunctions.net/api/roar/${roarId}/comment`,
       commentData
     )
     .then(res => {
@@ -83,42 +100,50 @@ export const submitComment = (screamId, commentData) => dispatch => {
       });
     });
 };
-export const deleteScream = screamId => dispatch => {
+
+/**
+ * delete a roar
+ */
+export const deleteRoar = roarId => dispatch => {
   axios
     .delete(
-      `https://us-central1-socialapp-dfb2e.cloudfunctions.net/api/scream/${screamId}`
+      `https://us-central1-socialapp-dfb2e.cloudfunctions.net/api/roar/${roarId}`
     )
     .then(() => {
-      dispatch({ type: DELETE_SCREAM, payload: screamId });
+      dispatch({ type: DELETE_ROAR, payload: roarId });
     })
     .catch(err => console.log(err));
 };
-export const getScream = screamId => dispatch => {
+
+export const getRoar = roarId => dispatch => {
   dispatch({ type: LOADING_UI });
   axios
     .get(
-      `https://us-central1-socialapp-dfb2e.cloudfunctions.net/api/scream/${screamId}`
+      `https://us-central1-socialapp-dfb2e.cloudfunctions.net/api/roar/${roarId}`
     )
     .then(res => {
       dispatch({
-        type: SET_SCREAM,
+        type: SET_ROAR,
         payload: res.data
       });
       dispatch({ type: STOP_LOADING_UI });
     })
     .catch(err => console.log(err));
 };
-// Post a scream
-export const postScream = newScream => dispatch => {
+
+/**
+ * Post a roar
+ */
+export const postRoar = newRoar => dispatch => {
   dispatch({ type: LOADING_UI });
   axios
     .post(
-      "https://us-central1-socialapp-dfb2e.cloudfunctions.net/api/scream",
-      newScream
+      "https://us-central1-socialapp-dfb2e.cloudfunctions.net/api/roar",
+      newRoar
     )
     .then(res => {
       dispatch({
-        type: POST_SCREAM,
+        type: POST_ROAR,
         payload: res.data
       });
       dispatch(clearErrors());
@@ -130,6 +155,7 @@ export const postScream = newScream => dispatch => {
       });
     });
 };
+
 export const getUserData = userHandle => dispatch => {
   dispatch({ type: LOADING_DATA });
   axios
@@ -138,13 +164,13 @@ export const getUserData = userHandle => dispatch => {
     )
     .then(res => {
       dispatch({
-        type: SET_SCREAMS,
-        payload: res.data.screams
+        type: SET_ROARS,
+        payload: res.data.roars
       });
     })
     .catch(() => {
       dispatch({
-        type: SET_SCREAMS,
+        type: SET_ROARS,
         payload: null
       });
     });

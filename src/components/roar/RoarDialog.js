@@ -1,25 +1,29 @@
+//review
 import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
-import withStyles from "@material-ui/core/styles/withStyles";
 import CustomButton from "../../util/CustomButton";
 import dayjs from "dayjs";
 import { Link } from "react-router-dom";
 import LikeButton from "./LikeButton";
 import Comments from "./Comments";
 import CommentForm from "./CommentForm";
+
 // MUI Stuff
+import withStyles from "@material-ui/core/styles/withStyles";
 import Dialog from "@material-ui/core/Dialog";
 import DialogContent from "@material-ui/core/DialogContent";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
+
 // Icons
 import CloseIcon from "@material-ui/icons/Close";
 import UnfoldMore from "@material-ui/icons/UnfoldMore";
 import ChatIcon from "@material-ui/icons/Chat";
+
 // Redux stuff
 import { connect } from "react-redux";
-import { getScream, clearErrors } from "../../redux/actions/dataAction";
+import { getRoar, clearErrors } from "../../redux/actions/dataAction";
 
 const styles = {
   invisibleSeparator: {
@@ -27,8 +31,8 @@ const styles = {
     margin: 4
   },
   profileImage: {
-    maxWidth: 200,
-    height: 200,
+    maxWidth: 180,
+    height: 180,
     borderRadius: "50%",
     objectFit: "cover"
   },
@@ -50,7 +54,7 @@ const styles = {
   }
 };
 
-class ScreamDialog extends Component {
+class RoarDialog extends Component {
   state = {
     open: false,
     oldPath: "",
@@ -61,19 +65,25 @@ class ScreamDialog extends Component {
       this.handleOpen();
     }
   }
+
+  /**
+   * when the user opens the dialog , change the link to ID of the roar
+   * when close the dialog , return back to the original link , remove Id of the roarID
+   */
   handleOpen = () => {
     let oldPath = window.location.pathname;
 
-    const { userHandle, screamId } = this.props;
-    const newPath = `/user/${userHandle}/scream/${screamId}`;
+    const { userHandle, roarId } = this.props;
+    const newPath = `/user/${userHandle}/roar/${roarId}`;
 
     if (oldPath === newPath) oldPath = `/user/${userHandle}`;
 
     window.history.pushState(null, null, newPath);
 
     this.setState({ open: true, oldPath, newPath });
-    this.props.getScream(this.props.screamId);
+    this.props.getRoar(this.props.roarId);
   };
+
   handleClose = () => {
     window.history.pushState(null, null, this.state.oldPath);
     this.setState({ open: false });
@@ -83,8 +93,8 @@ class ScreamDialog extends Component {
   render() {
     const {
       classes,
-      scream: {
-        screamId,
+      roar: {
+        roarId,
         body,
         createdAt,
         likeCount,
@@ -96,16 +106,17 @@ class ScreamDialog extends Component {
       UI: { loading }
     } = this.props;
 
+    //dialogMarkup : render loading spinner or content
     const dialogMarkup = loading ? (
       <div className={classes.spinnerDiv}>
         <CircularProgress size={200} thickness={2} />
       </div>
     ) : (
-      <Grid container spacing={10}>
-        <Grid item sm={5}>
+      <Grid container spacing={2}>
+        <Grid item sm={4}>
           <img src={userImage} alt="Profile" className={classes.profileImage} />
         </Grid>
-        <Grid item sm={7}>
+        <Grid item sm={8}>
           <Typography
             component={Link}
             color="primary"
@@ -120,7 +131,7 @@ class ScreamDialog extends Component {
           </Typography>
           <hr className={classes.invisibleSeparator} />
           <Typography variant="body1">{body}</Typography>
-          <LikeButton screamId={screamId} />
+          <LikeButton roarId={roarId} />
           <span>{likeCount} likes</span>
           <CustomButton tip="comments">
             <ChatIcon color="primary" />
@@ -128,15 +139,16 @@ class ScreamDialog extends Component {
           <span>{commentCount} comments</span>
         </Grid>
         <hr className={classes.visibleSeparator} />
-        <CommentForm screamId={screamId} />
+        <CommentForm roarId={roarId} />
         <Comments comments={comments} />
       </Grid>
     );
+
     return (
       <Fragment>
         <CustomButton
           onClick={this.handleOpen}
-          tip="Expand scream"
+          tip="Expand roar"
           tipClassName={classes.expandButton}
         >
           <UnfoldMore color="primary" />
@@ -163,26 +175,26 @@ class ScreamDialog extends Component {
   }
 }
 
-ScreamDialog.propTypes = {
+RoarDialog.propTypes = {
   clearErrors: PropTypes.func.isRequired,
-  getScream: PropTypes.func.isRequired,
-  screamId: PropTypes.string.isRequired,
+  getRoar: PropTypes.func.isRequired,
+  roarId: PropTypes.string.isRequired,
   userHandle: PropTypes.string.isRequired,
-  scream: PropTypes.object.isRequired,
+  roar: PropTypes.object.isRequired,
   UI: PropTypes.object.isRequired
 };
 
 const mapStateToProps = state => ({
-  scream: state.data.scream,
+  roar: state.data.roar,
   UI: state.UI
 });
 
 const mapActionsToProps = {
-  getScream,
+  getRoar,
   clearErrors
 };
 
 export default connect(
   mapStateToProps,
   mapActionsToProps
-)(withStyles(styles)(ScreamDialog));
+)(withStyles(styles)(RoarDialog));

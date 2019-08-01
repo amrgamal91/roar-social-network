@@ -1,3 +1,4 @@
+//done
 import React, { Component, Fragment } from "react";
 import withStyles from "@material-ui/core/styles/withStyles";
 import PropTypes from "prop-types";
@@ -11,7 +12,7 @@ import DialogActions from "@material-ui/core/DialogActions";
 import DeleteOutline from "@material-ui/icons/DeleteOutline";
 
 import { connect } from "react-redux";
-import { deleteScream } from "../../redux/actions/dataAction";
+import { deleteRoar } from "../../redux/actions/dataAction";
 
 const styles = {
   deleteButton: {
@@ -21,46 +22,49 @@ const styles = {
   }
 };
 
-class DeleteScream extends Component {
+class DeleteRoar extends Component {
   state = {
     open: false
   };
+
   handleOpen = () => {
     this.setState({ open: true });
   };
+
   handleClose = () => {
     this.setState({ open: false });
   };
-  deleteScream = () => {
-    this.props.deleteScream(this.props.screamId);
+
+  deleteRoar = () => {
+    this.props.deleteRoar(this.props.roarId);
     this.setState({ open: false });
   };
+
   render() {
     const { classes } = this.props;
 
     return (
       <Fragment>
         <CustomButton
-          tip="Delete Scream"
+          tip="Delete Roar"
           onClick={this.handleOpen}
           btnClassName={classes.deleteButton}
         >
           <DeleteOutline color="secondary" />
         </CustomButton>
+
         <Dialog
           open={this.state.open}
           onClose={this.handleClose}
           fullWidth
           maxWidth="sm"
         >
-          <DialogTitle>
-            Are you sure you want to delete this scream ?
-          </DialogTitle>
+          <DialogTitle>Are you sure you want to delete this roar ?</DialogTitle>
           <DialogActions>
             <Button onClick={this.handleClose} color="primary">
               Cancel
             </Button>
-            <Button onClick={this.deleteScream} color="secondary">
+            <Button onClick={this.deleteRoar} color="secondary">
               Delete
             </Button>
           </DialogActions>
@@ -70,13 +74,13 @@ class DeleteScream extends Component {
   }
 }
 
-DeleteScream.propTypes = {
-  deleteScream: PropTypes.func.isRequired,
+DeleteRoar.propTypes = {
+  deleteRoar: PropTypes.func.isRequired,
   classes: PropTypes.object.isRequired,
-  screamId: PropTypes.string.isRequired
+  roarId: PropTypes.string.isRequired
 };
 
 export default connect(
   null,
-  { deleteScream }
-)(withStyles(styles)(DeleteScream));
+  { deleteRoar }
+)(withStyles(styles)(DeleteRoar));

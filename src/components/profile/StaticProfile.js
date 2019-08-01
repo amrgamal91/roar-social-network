@@ -75,7 +75,7 @@ const StaticProfile = props => {
             color="primary"
             variant="h5"
           >
-            @{handle}
+            {handle}
           </MuiLink>
           <hr />
           {bio && <Typography variant="body2">{bio}</Typography>}

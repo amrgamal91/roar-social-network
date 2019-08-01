@@ -1,24 +1,30 @@
+//done
 import React, { Component, Fragment } from "react";
-import PropTypes from "prop-types";
-import withStyles from "@material-ui/core/styles/withStyles";
 import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
 import dayjs from "dayjs";
+
 // MUI
+import withStyles from "@material-ui/core/styles/withStyles";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 
 const styles = {
   commentImage: {
-    maxWidth: "100%",
+    maxWidth: "95%",
     height: 100,
     objectFit: "cover",
     borderRadius: "50%"
   },
   commentData: {
-    marginLeft: 20
+    marginLeft: 10
   }
 };
-
+/**
+ * here in map
+ * index param : The index of the current element being processed in the array
+ * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map
+ * */
 class Comments extends Component {
   render() {
     const { comments, classes } = this.props;

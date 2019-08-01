@@ -1,44 +1,50 @@
+//done
 import React, { Component } from "react";
-import CustomButton from "../../util/CustomButton";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
+import CustomButton from "../../util/CustomButton";
+
 // Icons
 import FavoriteIcon from "@material-ui/icons/Favorite";
 import FavoriteBorder from "@material-ui/icons/FavoriteBorder";
+
 // REdux
 import { connect } from "react-redux";
-import { likeScream, unlikeScream } from "../../redux/actions/dataAction";
+import { likeRoar, unlikeRoar } from "../../redux/actions/dataAction";
 
 export class LikeButton extends Component {
-  likedScream = () => {
+  likedRoar = () => {
     if (
       this.props.user.likes &&
-      this.props.user.likes.find(like => like.screamId === this.props.screamId)
+      this.props.user.likes.find(like => like.roarId === this.props.roarId)
     )
       return true;
     else return false;
   };
-  likeScream = () => {
-    this.props.likeScream(this.props.screamId);
+
+  likeRoar = () => {
+    this.props.likeRoar(this.props.roarId);
   };
-  unlikeScream = () => {
-    this.props.unlikeScream(this.props.screamId);
+
+  unlikeRoar = () => {
+    this.props.unlikeRoar(this.props.roarId);
   };
+
   render() {
     const { authenticated } = this.props.user;
     const likeButton = !authenticated ? (
       <Link to="/login">
         <CustomButton tip="Like">
-          <FavoriteBorder color="primary" />
+          <FavoriteBorder color="secondary" />
         </CustomButton>
       </Link>
-    ) : this.likedScream() ? (
-      <CustomButton tip="Undo like" onClick={this.unlikeScream}>
-        <FavoriteIcon color="primary" />
+    ) : this.likedRoar() ? (
+      <CustomButton tip="Undo like" onClick={this.unlikeRoar}>
+        <FavoriteIcon color="secondary" />
       </CustomButton>
     ) : (
-      <CustomButton tip="Like" onClick={this.likeScream}>
-        <FavoriteBorder color="primary" />
+      <CustomButton tip="Like" onClick={this.likeRoar}>
+        <FavoriteBorder color="secondary" />
       </CustomButton>
     );
     return likeButton;
@@ -47,9 +53,9 @@ export class LikeButton extends Component {
 
 LikeButton.propTypes = {
   user: PropTypes.object.isRequired,
-  screamId: PropTypes.string.isRequired,
-  likeScream: PropTypes.func.isRequired,
-  unlikeScream: PropTypes.func.isRequired
+  roarId: PropTypes.string.isRequired,
+  likeRoar: PropTypes.func.isRequired,
+  unlikeRoar: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => ({
@@ -57,8 +63,8 @@ const mapStateToProps = state => ({
 });
 
 const mapActionsToProps = {
-  likeScream,
-  unlikeScream
+  likeRoar,
+  unlikeRoar
 };
 
 export default connect(

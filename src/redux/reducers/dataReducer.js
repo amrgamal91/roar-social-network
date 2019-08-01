@@ -1,17 +1,17 @@
 import {
-  SET_SCREAMS,
-  LIKE_SCREAM,
-  UNLIKE_SCREAM,
+  SET_ROARS,
+  LIKE_ROAR,
+  UNLIKE_ROAR,
   LOADING_DATA,
-  DELETE_SCREAM,
-  POST_SCREAM,
-  SET_SCREAM,
+  DELETE_ROAR,
+  POST_ROAR,
+  SET_ROAR,
   SUBMIT_COMMENT
 } from "../types";
 
 const initialState = {
-  screams: [],
-  scream: {},
+  roars: [],
+  roar: {},
   loading: false
 };
 
@@ -22,43 +22,41 @@ export default function(state = initialState, action) {
         ...state,
         loading: true
       };
-    case SET_SCREAMS:
+    case SET_ROARS:
       return {
         ...state,
-        screams: action.payload,
+        roars: action.payload,
         loading: false
       };
-    case SET_SCREAM:
+    case SET_ROAR:
       return {
         ...state,
-        scream: action.payload
+        roar: action.payload
       };
-    case LIKE_SCREAM:
-    case UNLIKE_SCREAM:
-      let index = state.screams.findIndex(
-        scream => scream.screamId === action.payload.screamId
+    case LIKE_ROAR:
+    case UNLIKE_ROAR:
+      let index = state.roars.findIndex(
+        roar => roar.roarId === action.payload.roarId
       );
-      state.screams[index] = action.payload;
-      if (state.scream.screamId === action.payload.screamId) {
-        state.scream = action.payload;
+      state.roars[index] = action.payload;
+      if (state.roar.roarId === action.payload.roarId) {
+        state.roar = action.payload;
       }
       return {
         ...state
       };
-    case DELETE_SCREAM:
-      index = state.screams.findIndex(
-        scream => scream.screamId === action.payload
-      );
-      state.screams.splice(index, 1);
+    case DELETE_ROAR:
+      index = state.roars.findIndex(roar => roar.roarId === action.payload);
+      state.roars.splice(index, 1);
       return { ...state };
-    case POST_SCREAM:
-      return { ...state, screams: [action.payload, ...state.screams] };
+    case POST_ROAR:
+      return { ...state, roars: [action.payload, ...state.roars] };
     case SUBMIT_COMMENT:
       return {
         ...state,
-        scream: {
-          ...state.scream,
-          comments: [action.payload, ...state.scream.comments]
+        roar: {
+          ...state.roar,
+          comments: [action.payload, ...state.roar.comments]
         }
       };
     default:

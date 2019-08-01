@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import "./App.css";
+
+//MUI
 import MuiThemeProvider from "@material-ui/core/styles/MuiThemeProvider";
 import createMuiTheme from "@material-ui/core/styles/createMuiTheme";
 
@@ -8,23 +9,22 @@ import createMuiTheme from "@material-ui/core/styles/createMuiTheme";
 import { Provider } from "react-redux";
 import store from "./redux/store";
 import { SET_AUTHENTICATED } from "./redux/types";
-import {
-  logoutUser,
-  getUserData,
-  loginUser
-} from "./redux/actions/userActions";
+import { logoutUser, getUserData } from "./redux/actions/userActions";
+
 // Pages
 import home from "./pages/home";
 import login from "./pages/login";
 import signup from "./pages/signup";
 import user from "./pages/user";
 
+//components
 import NavBar from "./components/layout/NavBar";
 import themeFile from "./util/theme";
-import jwtDecode from "jwt-decode";
 import AuthRoute from "./util/AuthRoute";
 
 import axios from "axios";
+import jwtDecode from "jwt-decode";
+import "./App.css";
 
 const theme = createMuiTheme(themeFile);
 
@@ -56,13 +56,12 @@ class App extends Component {
             <div className="container">
               <Switch>
                 <Route exact path="/" component={home} />
-                loginUser
                 <AuthRoute exact path="/login" component={login} />
                 <AuthRoute exact path="/signup" component={signup} />
                 <Route exact path="/user/:handle" component={user} />
                 <Route
                   exact
-                  path="/users/:handle/scream/:screamId"
+                  path="/users/:handle/roar/:roarId"
                   component={user}
                 />
               </Switch>
