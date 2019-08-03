@@ -1,28 +1,38 @@
+//done
 import React, { Component } from "react";
-import withStyles from "@material-ui/core/styles/withStyles";
 import PropTypes from "prop-types";
 import AppIcon from "../images/lion.ico";
 import { Link } from "react-router-dom";
+
 //MUI Stuff
+import withStyles from "@material-ui/core/styles/withStyles";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import CircularProgress from "@material-ui/core/CircularProgress";
+import Paper from "@material-ui/core/Paper";
 
 //Redux Stuff
 import { connect } from "react-redux";
 import { signupUser } from "../redux/actions/userActions";
 
 const styles = {
+  paper: {
+    padding: 20,
+    borderRadius: 10
+  },
   form: {
+    // justifyContent: "center",
+    margin: "0 auto",
     textAlign: "center"
   },
   image: {
     margin: "20px auto 20px auto"
   },
   pageTitle: {
-    margin: "10px auto 10px auto"
+    margin: "10px auto 10px auto",
+    color: "#00bcd4"
   },
   textField: {
     margin: "10px auto 10px auto"
@@ -45,18 +55,20 @@ class signup extends Component {
   constructor() {
     super();
     this.state = {
-      emial: "",
+      email: "",
       password: "",
       confirmPassword: "",
       handle: "",
       errors: {}
     };
   }
+
   componentWillReceiveProps(nextProps) {
     if (nextProps.UI.errors) {
       this.setState({ errors: nextProps.UI.errors });
     }
   }
+
   handleSubmit = event => {
     event.preventDefault();
     this.setState({
@@ -70,11 +82,13 @@ class signup extends Component {
     };
     this.props.signupUser(newUserData, this.props.history);
   };
+
   handleChange = event => {
     this.setState({
       [event.target.name]: event.target.value
     });
   };
+
   render() {
     const {
       classes,
@@ -82,86 +96,88 @@ class signup extends Component {
     } = this.props;
     const { errors } = this.state;
     return (
-      <Grid container className={classes.form}>
-        <Grid item sm />
-        <Grid item sm>
-          <img src={AppIcon} alt="lion" className={classes.image} />
-          <Typography variant="h2" className={classes.pageTitle}>
-            Signup
-          </Typography>
-          <form noValidate onSubmit={this.handleSubmit}>
-            <TextField
-              id="email "
-              name="email"
-              type="email"
-              label="Email"
-              className={classes.textField}
-              helperText={errors.email}
-              error={errors.email ? true : false}
-              value={this.state.email}
-              onChange={this.handleChange}
-              fullWidth
-            />
-            <TextField
-              id="password "
-              name="password"
-              type="password"
-              label="Password"
-              className={classes.textField}
-              helperText={errors.password}
-              error={errors.password ? true : false}
-              value={this.state.password}
-              onChange={this.handleChange}
-              fullWidth
-            />
-            <TextField
-              id="confirmPassword "
-              name="confirmPassword"
-              type="password"
-              label="Confirm Password"
-              className={classes.textField}
-              helperText={errors.confirmPassword}
-              error={errors.confirmPassword ? true : false}
-              value={this.state.confirmPassword}
-              onChange={this.handleChange}
-              fullWidth
-            />
-            <TextField
-              id="handle "
-              name="handle"
-              type="text"
-              label="Handle"
-              className={classes.textField}
-              helperText={errors.handleChange}
-              error={errors.handlhandleChange ? true : false}
-              value={this.state.handle}
-              onChange={this.handleChange}
-              fullWidth
-            />
-            {errors.general && (
-              <Typography variant="body2" className={classes.customError}>
-                {errors.general}
-              </Typography>
-            )}
-            <Button
-              type="submit"
-              variant="contained"
-              color="primary"
-              className={classes.Button}
-              disabled={loading}
-            >
+      <Grid container className={classes.form} sm={5} xs={12}>
+        <Paper className={classes.paper}>
+          <Grid item sm />
+          <Grid item sm>
+            <img src={AppIcon} alt="lion" className={classes.image} />
+            <Typography variant="h2" className={classes.pageTitle}>
               Signup
-              {loading && (
-                <CircularProgress size={30} className={classes.progress} />
+            </Typography>
+            <form noValidate onSubmit={this.handleSubmit}>
+              <TextField
+                id="email "
+                name="email"
+                type="email"
+                label="Email"
+                className={classes.textField}
+                helperText={errors.email}
+                error={errors.email ? true : false}
+                value={this.state.email}
+                onChange={this.handleChange}
+                fullWidth
+              />
+              <TextField
+                id="password "
+                name="password"
+                type="password"
+                label="Password"
+                className={classes.textField}
+                helperText={errors.password}
+                error={errors.password ? true : false}
+                value={this.state.password}
+                onChange={this.handleChange}
+                fullWidth
+              />
+              <TextField
+                id="confirmPassword "
+                name="confirmPassword"
+                type="password"
+                label="Confirm Password"
+                className={classes.textField}
+                helperText={errors.confirmPassword}
+                error={errors.confirmPassword ? true : false}
+                value={this.state.confirmPassword}
+                onChange={this.handleChange}
+                fullWidth
+              />
+              <TextField
+                id="handle "
+                name="handle"
+                type="text"
+                label="Handle"
+                className={classes.textField}
+                helperText={errors.handleChange}
+                error={errors.handlhandleChange ? true : false}
+                value={this.state.handle}
+                onChange={this.handleChange}
+                fullWidth
+              />
+              {errors.general && (
+                <Typography variant="body2" className={classes.customError}>
+                  {errors.general}
+                </Typography>
               )}
-            </Button>
-            <br />
-            <small>
-              Already have an account ? Login <Link to="/login">here</Link>{" "}
-            </small>
-          </form>
-        </Grid>
-        <Grid item sm />
+              <Button
+                type="submit"
+                variant="contained"
+                color="primary"
+                className={classes.Button}
+                disabled={loading}
+              >
+                Signup
+                {loading && (
+                  <CircularProgress size={30} className={classes.progress} />
+                )}
+              </Button>
+              <br />
+              <small>
+                Already have an account ? Login <Link to="/login">here</Link>{" "}
+              </small>
+            </form>
+          </Grid>
+          <Grid item sm />
+        </Paper>
       </Grid>
     );
   }
@@ -173,10 +189,12 @@ signup.propTypes = {
   UI: PropTypes.object.isRequired,
   signupUser: PropTypes.func.isRequired
 };
+
 const mapStateToProps = state => ({
   user: state.user,
   UI: state.UI
 });
+
 const mapActionsToProps = {
   signupUser
 };

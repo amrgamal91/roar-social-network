@@ -1,20 +1,47 @@
+//done
 import React, { Fragment } from "react";
 import PropTypes from "prop-types";
-import withStyles from "@material-ui/core/styles/withStyles";
 import dayjs from "dayjs";
 import { Link } from "react-router-dom";
+
 // MUI
+import withStyles from "@material-ui/core/styles/withStyles";
 import MuiLink from "@material-ui/core/Link";
 import Paper from "@material-ui/core/Paper";
 import Typography from "@material-ui/core/Typography";
+
 // Icons
 import LocationOn from "@material-ui/icons/LocationOn";
 import LinkIcon from "@material-ui/icons/Link";
 import CalendarToday from "@material-ui/icons/CalendarToday";
+import InfoRounded from "@material-ui/icons/InfoRounded";
 
 const styles = {
+  invisibleSeparator: {
+    border: "none",
+    margin: 4
+  },
+  visibleColoredSeparator: {
+    width: "100%",
+    borderBottom: "1px solid rgba(128,128,128,0.5)",
+    marginBottom: 5,
+    marginTop: 10
+  },
+  typography: {
+    useNextVariants: true
+  },
+  image: {
+    margin: "20px auto 20px auto"
+  },
+  button: {
+    marginTop: 20,
+    position: "relative"
+  },
   paper: {
-    padding: 20
+    paddingTop: 10,
+    paddingBottom: 10,
+    paddingRight: 20,
+    paddingLeft: 20
   },
   profile: {
     "& .image-wrapper": {
@@ -34,22 +61,39 @@ const styles = {
       borderRadius: "50%"
     },
     "& .profile-details": {
-      textAlign: "center",
       "& span, svg": {
         verticalAlign: "middle"
       },
       "& a": {
-        color: "#00bcd4"
+        color: "#008394"
       }
     },
-    "& hr": {
-      border: "none",
-      margin: "0 0 10px 0"
+
+    "& .userName": {
+      display: "block",
+      textAlign: "center",
+      marginLeft: " auto",
+      marignRight: "auto"
     },
     "& svg.button": {
       "&:hover": {
         cursor: "pointer"
       }
+    }
+  },
+
+  labels: {
+    color: "#00bcd4",
+    marginRight: 6
+  },
+  userDetailsIcons: {
+    color: "#00bcd4",
+    marginRight: 7
+  },
+  buttons: {
+    textAlign: "center",
+    "& a": {
+      margin: "20px 10px"
     }
   }
 };
@@ -66,38 +110,66 @@ const StaticProfile = props => {
         <div className="image-wrapper">
           <img src={imageUrl} alt="profile" className="profile-image" />
         </div>
-        <hr />
+
         <div className="profile-details">
           <MuiLink
+            className="userName"
             component={Link}
-            to={`/user/${props.handle}`}
+            to={`/user/${handle}`}
             // to={"/user/" + this.props.profile.handle}
-            color="primary"
-            variant="h5"
+            variant="h4"
           >
             {handle}
           </MuiLink>
-          <hr />
-          {bio && <Typography variant="body2">{bio}</Typography>}
-          <hr />
+          <hr className={classes.visibleColoredSeparator} />
+          {bio && (
+            <Fragment>
+              <div style={{ display: "inline-flex" }}>
+                <InfoRounded className={classes.userDetailsIcons} />
+                <Typography variant="body2">{bio}</Typography>
+              </div>
+            </Fragment>
+          )}
+          <hr className={classes.invisibleSeparator} />
           {location && (
             <Fragment>
-              <LocationOn color="primary" /> <span>{location}</span>
-              <hr />
+              <div style={{ display: "inline-flex" }}>
+                <LocationOn className={classes.userDetailsIcons} />
+                <Typography variant="body2" className={classes.labels}>
+                  From
+                </Typography>
+                <Typography variant="body2">{" " + location}</Typography>
+              </div>
             </Fragment>
           )}
+          <hr className={classes.invisibleSeparator} />
           {website && (
             <Fragment>
-              <LinkIcon color="primary" />
-              <a href={website} target="_blank" rel="noopener noreferrer">
-                {" "}
-                {website}
-              </a>
-              <hr />
+              <div style={{ display: "inline-flex" }}>
+                <LinkIcon className={classes.userDetailsIcons} />
+                <Typography variant="body2" className={classes.labels}>
+                  WebPage
+                </Typography>
+                <Typography variant="body2">
+                  {" "}
+                  <a href={website} target="_blank" rel="noopener noreferrer">
+                    {" "}
+                    {website}
+                  </a>
+                </Typography>
+              </div>
             </Fragment>
           )}
-          <CalendarToday color="primary" />{" "}
-          <span>Joined {dayjs(createdAt).format("MMM YYYY")}</span>
+          <hr className={classes.invisibleSeparator} />
+          <div style={{ display: "inline-flex" }}>
+            <CalendarToday className={classes.userDetailsIcons} /> {""}
+            <Typography variant="body2" className={classes.labels}>
+              Member since
+            </Typography>
+            <Typography variant="body2">
+              {dayjs(createdAt).format("MMM YYYY")}
+            </Typography>
+          </div>
         </div>
       </div>
     </Paper>

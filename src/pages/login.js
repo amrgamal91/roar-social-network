@@ -1,29 +1,42 @@
+//done
 import React, { Component } from "react";
-import withStyles from "@material-ui/core/styles/withStyles";
 import PropTypes from "prop-types";
 import AppIcon from "../images/lion.ico";
 import { Link } from "react-router-dom";
-
+import NatureBg from "../images/nature-bg.jpg";
 //MUI Stuff
+import withStyles from "@material-ui/core/styles/withStyles";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import CircularProgress from "@material-ui/core/CircularProgress";
+import Paper from "@material-ui/core/Paper";
 
 //Redux stuff
 import { connect } from "react-redux";
 import { loginUser } from "../redux/actions/userActions";
 
+const imagePath = "../images/nature-bg.jpg";
 const styles = {
+  // body: {
+  //   backgroundColor: "red",
+  //   backgroundImage: `url(${imagePath})`
+  // },
+  paper: {
+    padding: 20,
+    borderRadius: 10
+  },
   form: {
+    margin: "0 auto",
     textAlign: "center"
   },
   image: {
     margin: "20px auto 20px auto"
   },
   pageTitle: {
-    margin: "10px auto 10px auto"
+    margin: "10px auto 10px auto",
+    color: "#00bcd4"
   },
   textField: {
     margin: "10px auto 10px auto"
@@ -46,9 +59,8 @@ class login extends Component {
   constructor() {
     super();
     this.state = {
-      emial: "",
+      email: "",
       password: "",
-      // loading: false,
       errors: {}
     };
   }
@@ -61,9 +73,6 @@ class login extends Component {
 
   handleSubmit = event => {
     event.preventDefault();
-    // this.setState({
-    //   loading: true
-    // });
     const userData = {
       email: this.state.email,
       password: this.state.password
@@ -86,62 +95,64 @@ class login extends Component {
     const { errors } = this.state;
 
     return (
-      <Grid container className={classes.form}>
-        <Grid item sm />
-        <Grid item sm>
-          <img src={AppIcon} alt="lion" className={classes.image} />
-          <Typography variant="h2" className={classes.pageTitle}>
-            Login
-          </Typography>
-          <form noValidate onSubmit={this.handleSubmit}>
-            <TextField
-              id="email "
-              name="email"
-              type="email"
-              label="Email"
-              className={classes.textField}
-              helperText={errors.email}
-              error={errors.email ? true : false}
-              value={this.state.email}
-              onChange={this.handleChange}
-              fullWidth
-            />
-            <TextField
-              id="password "
-              name="password"
-              type="password"
-              label="Password"
-              className={classes.textField}
-              helperText={errors.password}
-              error={errors.password ? true : false}
-              value={this.state.password}
-              onChange={this.handleChange}
-              fullWidth
-            />
-            {errors.general && (
-              <Typography variant="body2" className={classes.customError}>
-                {errors.general}
-              </Typography>
-            )}
-            <Button
-              type="submit"
-              variant="contained"
-              color="primary"
-              className={classes.Button}
-              disabled={loading}
-            >
+      <Grid container className={classes.form} sm={5} xs={12}>
+        <Paper className={classes.paper}>
+          <Grid item sm />
+          <Grid item sm>
+            <img src={AppIcon} alt="lion" className={classes.image} />
+            <Typography variant="h2" className={classes.pageTitle}>
               Login
-              {loading && (
-                <CircularProgress size={30} className={classes.progress} />
+            </Typography>
+            <form noValidate onSubmit={this.handleSubmit}>
+              <TextField
+                id="email "
+                name="email"
+                type="email"
+                label="Email"
+                className={classes.textField}
+                helperText={errors.email}
+                error={errors.email ? true : false}
+                value={this.state.email}
+                onChange={this.handleChange}
+                fullWidth
+              />
+              <TextField
+                id="password "
+                name="password"
+                type="password"
+                label="Password"
+                className={classes.textField}
+                helperText={errors.password}
+                error={errors.password ? true : false}
+                value={this.state.password}
+                onChange={this.handleChange}
+                fullWidth
+              />
+              {errors.general && (
+                <Typography variant="body2" className={classes.customError}>
+                  {errors.general}
+                </Typography>
               )}
-            </Button>
-            <br />
-            <small>
-              dont have an account ? sign up <Link to="/signup">here</Link>{" "}
-            </small>
-          </form>
-        </Grid>
-        <Grid item sm />
+              <Button
+                type="submit"
+                variant="contained"
+                color="primary"
+                className={classes.Button}
+                disabled={loading}
+              >
+                Login
+                {loading && (
+                  <CircularProgress size={30} className={classes.progress} />
+                )}
+              </Button>
+              <br />
+              <small>
+                dont have an account ? sign up <Link to="/signup">here</Link>{" "}
+              </small>
+            </form>
+          </Grid>
+          <Grid item sm />
+        </Paper>
       </Grid>
     );
   }

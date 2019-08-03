@@ -1,13 +1,18 @@
+//done
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import axios from "axios";
-import Roar from "../components/roar/Roar";
+
 import Grid from "@material-ui/core/Grid";
 import StaticProfile from "../components/profile/StaticProfile";
-import { connect } from "react-redux";
-import { getUserData } from "../redux/actions/dataAction";
+import Roar from "../components/roar/Roar";
 import RoarSkeleton from "../util/RoarSkeleton";
 import ProfileSkeleton from "../util/ProfileSkeleton";
+
+//Redux
+import { connect } from "react-redux";
+import { getUserData } from "../redux/actions/dataAction";
+
 class user extends Component {
   state = {
     profile: null,
@@ -15,11 +20,11 @@ class user extends Component {
   };
 
   componentDidMount() {
-    console.log("beginning of Component did mount ....!!!");
+    // console.log("beginning of Component did mount ....!!!");
     const handle = this.props.match.params.handle;
-    console.log("handle is : " + handle);
-    console.log("params is : " + this.props.match.params);
-    console.log("props is : " + this.props);
+    // console.log("handle is : " + handle);
+    // console.log("params are : " + this.props.match.params);
+    // console.log("props are : " + this.props);
 
     const roarId = this.props.match.params.roarId;
 
@@ -35,7 +40,6 @@ class user extends Component {
           profile: res.data.user
         });
         console.log("the handle : " + handle);
-
         console.log("the profile data : " + res.data.user.bio);
       })
       .catch(err =>
@@ -65,7 +69,6 @@ class user extends Component {
           )}
         </Grid>
       </Grid>
-      // <div>here is the user component</div>
     );
   }
 }

@@ -24,7 +24,9 @@ import {
 
 import axios from "axios";
 
-// Get all roars
+/**
+ * getting all roars from database
+ */
 export const getRoars = () => dispatch => {
   dispatch({ type: LOADING_DATA });
   axios
@@ -156,6 +158,9 @@ export const postRoar = newRoar => dispatch => {
     });
 };
 
+/**
+ * get Roars of a particular user
+ */
 export const getUserData = userHandle => dispatch => {
   dispatch({ type: LOADING_DATA });
   axios
@@ -175,6 +180,7 @@ export const getUserData = userHandle => dispatch => {
       });
     });
 };
+
 export const clearErrors = () => dispatch => {
   dispatch({ type: CLEAR_ERRORS });
 };

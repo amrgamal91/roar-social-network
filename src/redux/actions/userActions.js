@@ -1,3 +1,4 @@
+//done
 import {
   SET_USER,
   SET_ERRORS,
@@ -9,6 +10,11 @@ import {
 } from "../types";
 import axios from "axios";
 
+/**
+ * call login user api , then
+ * set set authorization header value to the received token ,then
+ * get the user data ,
+ */
 export const loginUser = (userData, history) => dispatch => {
   dispatch({ type: LOADING_UI });
   axios
@@ -17,8 +23,6 @@ export const loginUser = (userData, history) => dispatch => {
       userData
     )
     .then(res => {
-      //   consoel.log(res.data);
-      //   this.setState({ loading: false });
       setAuthorizationHeader(res.data.idtoken);
       dispatch(getUserData());
       dispatch({ type: CLEAR_ERRORS });
@@ -60,6 +64,11 @@ export const getUserData = () => dispatch => {
     .catch(err => console.log("Error while getting user data ! : " + err));
 };
 
+/**
+ * call signup user api , then
+ * set set authorization header value to the received token ,then
+ * get the user data ,
+ */
 export const signupUser = (newUserData, history) => dispatch => {
   dispatch({ type: LOADING_UI });
   axios
@@ -68,8 +77,6 @@ export const signupUser = (newUserData, history) => dispatch => {
       newUserData
     )
     .then(res => {
-      //   consoel.log(res.data);
-      //   this.setState({ loading: false });
       setAuthorizationHeader(res.data.token);
       dispatch(getUserData());
       dispatch({ type: CLEAR_ERRORS });
@@ -118,6 +125,9 @@ export const editUserDetails = userDetails => dispatch => {
     .catch(err => console.log(err));
 };
 
+/**
+ * set the read flag of notifications to true
+ */
 export const markNotificationsRead = notificationIds => dispatch => {
   axios
     .post(
@@ -132,9 +142,13 @@ export const markNotificationsRead = notificationIds => dispatch => {
     .catch(err => console.log(err));
 };
 
+/**
+ * create token variable in browser localStorage,then
+ * set the authorization header value in request (Token)
+ */
 const setAuthorizationHeader = token => {
   const FBIdToken = `Bearer ${token}`;
-  console.log(`here is the data from login ${token}`);
+  console.log(`here is the Token value : ${token}`);
   localStorage.setItem("FireBaseIdToken", FBIdToken);
   axios.defaults.headers.common["Authorization"] = FBIdToken;
 };

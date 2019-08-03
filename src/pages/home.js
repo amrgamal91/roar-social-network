@@ -1,3 +1,4 @@
+//done
 import React, { Component } from "react";
 import Grid from "@material-ui/core/Grid";
 import Roar from "../components/roar/Roar";
@@ -11,6 +12,7 @@ export class home extends Component {
   componentDidMount() {
     this.props.getRoars();
   }
+
   render() {
     const { roars, loading } = this.props.data;
     let recentRoarsMarkup = !loading ? (
