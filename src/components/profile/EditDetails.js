@@ -1,8 +1,10 @@
+//done
 import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
+import CustomButton from "../../util/CustomButton";
+
+//MUI
 import withStyles from "@material-ui/core/styles/withStyles";
-import { connect } from "react-redux";
-import { editUserDetails } from "../../redux/actions/userActions";
 import Dialog from "@material-ui/core/Dialog";
 import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
@@ -10,50 +12,21 @@ import DialogTitle from "@material-ui/core/DialogTitle";
 import EditIcon from "@material-ui/icons/Edit";
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
-import CustomButton from "../../util/CustomButton";
+
+//Redux
+import { connect } from "react-redux";
+import { editUserDetails } from "../../redux/actions/userActions";
 
 const styles = {
   button: { float: "right" },
   paper: {
     padding: 20
   },
-  profile: {
-    "& .image-wrapper": {
-      textAlign: "center",
-      position: "relative",
-      "& button": {
-        position: "absolute",
-        top: "80%",
-        left: "70%"
-      }
-    },
-    "& .profile-image": {
-      width: 200,
-      height: 200,
-      objectFit: "cover",
-      maxWidth: "100%",
-      borderRadius: "50%"
-    },
-    "& .profile-details": {
-      textAlign: "center",
-      "& span, svg": {
-        verticalAlign: "middle"
-      },
-      "& a": {
-        color: "#00bcd4"
-      }
-    },
-    "& hr": {
-      border: "none",
-      margin: "0 0 10px 0"
-    },
-    "& svg.button": {
-      "&:hover": {
-        cursor: "pointer"
-      }
-    }
+  title: {
+    color: "#00bcd4"
   }
 };
+
 class EditDetails extends Component {
   state = {
     bio: "",
@@ -61,6 +34,7 @@ class EditDetails extends Component {
     location: "",
     open: false
   };
+
   mapUserDetailsToState = credentials => {
     this.setState({
       bio: credentials.bio ? credentials.bio : "",
@@ -68,13 +42,21 @@ class EditDetails extends Component {
       location: credentials.location ? credentials.location : ""
     });
   };
+
   handleOpen = () => {
     this.setState({ open: true });
     this.mapUserDetailsToState(this.props.credentials);
   };
+
   handleClose = () => {
     this.setState({ open: false });
   };
+
+  /**
+   * when opening the edit details form , we need to fill the text fields with
+   * the current values , so we create a state for this component
+   * and then set these state values with its correspondings from redux store
+   */
   componentDidMount() {
     const { credentials } = this.props;
     this.mapUserDetailsToState(credentials);
@@ -85,6 +67,7 @@ class EditDetails extends Component {
       [event.target.name]: event.target.value
     });
   };
+
   handleSubmit = () => {
     const userDetails = {
       bio: this.state.bio,
@@ -94,6 +77,7 @@ class EditDetails extends Component {
     this.props.editUserDetails(userDetails);
     this.handleClose();
   };
+
   render() {
     const { classes } = this.props;
     return (
@@ -105,13 +89,18 @@ class EditDetails extends Component {
         >
           <EditIcon color="primary" />
         </CustomButton>
+
         <Dialog
           open={this.state.open}
           onClose={this.handleClose}
           fullWidth
           maxWidth="sm"
         >
-          <DialogTitle> Edit your details</DialogTitle>
+          <DialogTitle className={classes.title}>
+            {" "}
+            Edit your details
+          </DialogTitle>
+
           <DialogContent>
             <form>
               <TextField
@@ -148,6 +137,7 @@ class EditDetails extends Component {
               />
             </form>
           </DialogContent>
+
           <DialogActions>
             <Button onClick={this.handleClose} color="primary">
               Cancel
@@ -166,9 +156,11 @@ EditDetails.propTypes = {
   editUserDetails: PropTypes.func.isRequired,
   classes: PropTypes.object.isRequired
 };
+
 const mapStateToProps = state => ({
   credentials: state.user.credentials
 });
+
 export default connect(
   mapStateToProps,
   { editUserDetails }

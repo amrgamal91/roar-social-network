@@ -10,6 +10,20 @@ import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 
 const styles = {
+  palette: {
+    primary: {
+      light: "#33c9dc",
+      main: "#00bcd4",
+      dark: "#008394",
+      contrastText: "#fff"
+    },
+    secondary: {
+      light: "#ff6333",
+      main: "#ff3d00",
+      dark: "#b22a00",
+      contrastText: "#fff"
+    }
+  },
   commentImage: {
     maxWidth: "95%",
     height: 100,
@@ -18,6 +32,11 @@ const styles = {
   },
   commentData: {
     marginLeft: 10
+  },
+  commentBlock: {
+    border: "2px solid rgb(0,	188,	212)",
+    borderRadius: 5,
+    padding: 5
   }
 };
 /**
@@ -34,7 +53,7 @@ class Comments extends Component {
           const { body, createdAt, userImage, userHandle } = comment;
           return (
             <Fragment key={createdAt}>
-              <Grid item sm={12}>
+              <Grid item sm={12} className={classes.commentBlock}>
                 <Grid container>
                   <Grid item sm={2}>
                     <img

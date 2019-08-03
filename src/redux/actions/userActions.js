@@ -32,12 +32,21 @@ export const loginUser = (userData, history) => dispatch => {
     });
 };
 
+/**
+ * 1- removes the authorization token
+ * 2- removes the authorization header from request headers
+ * 3- back to initial state in Redux user reducer
+ */
 export const logoutUser = () => dispatch => {
   localStorage.removeItem("FBIdToken");
   delete axios.defaults.headers.common["Authorization"];
   dispatch({ type: SET_UNAUTHENTICATED });
 };
 
+/**
+ * get the userdata from server and then ,
+ * update the current state with the new data
+ */
 export const getUserData = () => dispatch => {
   dispatch({ type: LOADING_USER });
   axios
@@ -74,6 +83,11 @@ export const signupUser = (newUserData, history) => dispatch => {
     });
 };
 
+/**
+ * upload images changes in userData (imageUrl) so
+ * after uploading the image file , it should back with user new data
+ * that contains the new ImageUrl (updating the state)
+ */
 export const uploadImage = formData => dispatch => {
   dispatch({ type: LOADING_USER });
   axios
@@ -87,6 +101,10 @@ export const uploadImage = formData => dispatch => {
     .catch(err => console.log(err));
 };
 
+/**
+ * updates the user details with the new values
+ * get the updated userdetails in the response
+ */
 export const editUserDetails = userDetails => dispatch => {
   dispatch({ type: LOADING_USER });
   axios
@@ -99,6 +117,7 @@ export const editUserDetails = userDetails => dispatch => {
     })
     .catch(err => console.log(err));
 };
+
 export const markNotificationsRead = notificationIds => dispatch => {
   axios
     .post(

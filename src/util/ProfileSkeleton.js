@@ -1,15 +1,56 @@
+//done
 import React from "react";
 import PropTypes from "prop-types";
-import withStyles from "@material-ui/core/styles/withStyles";
 import NoImg from "../images/no-img.png";
+
 // MUI
+import withStyles from "@material-ui/core/styles/withStyles";
 import Paper from "@material-ui/core/Paper";
+
 // Icons
 import LocationOn from "@material-ui/icons/LocationOn";
 import LinkIcon from "@material-ui/icons/Link";
 import CalendarToday from "@material-ui/icons/CalendarToday";
 
 const styles = {
+  profile: {
+    "& .image-wrapper": {
+      textAlign: "center",
+      position: "relative",
+      "& button": {
+        position: "absolute",
+        top: "80%",
+        left: "70%"
+      }
+    },
+    "& .profile-image": {
+      width: 200,
+      height: 200,
+      objectFit: "cover",
+      maxWidth: "100%",
+      borderRadius: "50%"
+    },
+    "& .profile-details": {
+      "& span, svg": {
+        verticalAlign: "middle"
+      },
+      "& a": {
+        color: "#008394"
+      }
+    },
+
+    "& .userName": {
+      display: "block",
+      textAlign: "center",
+      marginLeft: " auto",
+      marignRight: "auto"
+    },
+    "& svg.button": {
+      "&:hover": {
+        cursor: "pointer"
+      }
+    }
+  },
   handle: {
     height: 20,
     // backgroundColor: theme.palette.primary.main,
