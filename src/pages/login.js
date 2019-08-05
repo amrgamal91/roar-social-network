@@ -1,7 +1,7 @@
 //done
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import AppIcon from "../images/lion.ico";
+import AppIcon from "../images/brandLogo.png";
 import { Link } from "react-router-dom";
 import NatureBg from "../images/nature-bg.jpg";
 //MUI Stuff
@@ -19,10 +19,6 @@ import { loginUser } from "../redux/actions/userActions";
 
 const imagePath = "../images/nature-bg.jpg";
 const styles = {
-  // body: {
-  //   backgroundColor: "red",
-  //   backgroundImage: `url(${imagePath})`
-  // },
   paper: {
     padding: 20,
     borderRadius: 10
@@ -32,9 +28,13 @@ const styles = {
     textAlign: "center"
   },
   image: {
+    display: "block",
     margin: "20px auto 20px auto"
   },
   pageTitle: {
+    fontFamily: "'Courgette', cursive",
+    fontWeight: "Bold",
+    fontSize: "4.8rem",
     margin: "10px auto 10px auto",
     color: "#00bcd4"
   },
@@ -95,7 +95,7 @@ class login extends Component {
     const { errors } = this.state;
 
     return (
-      <Grid container className={classes.form} sm={5} xs={12}>
+      <Grid container className={classes.form} sm={4} xs={12}>
         <Paper className={classes.paper}>
           <Grid item sm />
           <Grid item sm>

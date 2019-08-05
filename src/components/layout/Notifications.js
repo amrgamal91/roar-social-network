@@ -1,3 +1,4 @@
+//done -- VI
 import React, { Component, Fragment } from "react";
 import { Link } from "react-router-dom";
 import dayjs from "dayjs";
@@ -22,18 +23,22 @@ class Notifications extends Component {
   state = {
     anchorEl: null
   };
+
   handleOpen = event => {
     this.setState({ anchorEl: event.target });
   };
+
   handleClose = () => {
     this.setState({ anchorEl: null });
   };
+
   onMenuOpened = () => {
     let unreadNotificationsIds = this.props.notifications
       .filter(not => !not.read)
       .map(not => not.notificationId);
     this.props.markNotificationsRead(unreadNotificationsIds);
   };
+
   render() {
     const notifications = this.props.notifications;
     const anchorEl = this.state.anchorEl;
@@ -41,6 +46,8 @@ class Notifications extends Component {
     dayjs.extend(relativeTime);
 
     let notificationsIcon;
+
+    // 1- icon & badge part
     if (notifications && notifications.length > 0) {
       notifications.filter(not => not.read === false).length > 0
         ? (notificationsIcon = (
@@ -57,6 +64,8 @@ class Notifications extends Component {
     } else {
       notificationsIcon = <NotificationsIcon />;
     }
+
+    //2- notifications list part
     let notificationsMarkup =
       notifications && notifications.length > 0 ? (
         notifications.map(not => {
@@ -89,6 +98,7 @@ class Notifications extends Component {
           You have no notifications yet
         </MenuItem>
       );
+
     return (
       <Fragment>
         <Tooltip placement="top" title="Notifications">
@@ -100,6 +110,7 @@ class Notifications extends Component {
             {notificationsIcon}
           </IconButton>
         </Tooltip>
+
         <Menu
           anchorEl={anchorEl}
           open={Boolean(anchorEl)}

@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 //MUI
 import MuiThemeProvider from "@material-ui/core/styles/MuiThemeProvider";
 import createMuiTheme from "@material-ui/core/styles/createMuiTheme";
+import CssBaseline from "@material-ui/core/CssBaseline";
 
 //Redux
 import { Provider } from "react-redux";
