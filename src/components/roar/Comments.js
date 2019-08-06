@@ -9,36 +9,9 @@ import withStyles from "@material-ui/core/styles/withStyles";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 
-const styles = {
-  palette: {
-    primary: {
-      light: "#33c9dc",
-      main: "#00bcd4",
-      dark: "#008394",
-      contrastText: "#fff"
-    },
-    secondary: {
-      light: "#ff6333",
-      main: "#ff3d00",
-      dark: "#b22a00",
-      contrastText: "#fff"
-    }
-  },
-  commentImage: {
-    maxWidth: "95%",
-    height: 100,
-    objectFit: "cover",
-    borderRadius: "50%"
-  },
-  commentData: {
-    marginLeft: 10
-  },
-  commentBlock: {
-    border: "2px solid rgb(0,	188,	212)",
-    borderRadius: 5,
-    padding: 5
-  }
-};
+const styles = theme => ({
+  ...theme.comments
+});
 /**
  * here in map
  * index param : The index of the current element being processed in the array
@@ -65,6 +38,7 @@ class Comments extends Component {
                   <Grid item sm={9}>
                     <div className={classes.commentData}>
                       <Typography
+                        className={classes.userHandle}
                         variant="h5"
                         component={Link}
                         to={`/user/${userHandle}`}

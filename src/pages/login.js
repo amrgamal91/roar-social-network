@@ -3,7 +3,6 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import AppIcon from "../images/brandLogo.png";
 import { Link } from "react-router-dom";
-import NatureBg from "../images/nature-bg.jpg";
 //MUI Stuff
 import withStyles from "@material-ui/core/styles/withStyles";
 import Grid from "@material-ui/core/Grid";
@@ -17,43 +16,9 @@ import Paper from "@material-ui/core/Paper";
 import { connect } from "react-redux";
 import { loginUser } from "../redux/actions/userActions";
 
-const imagePath = "../images/nature-bg.jpg";
-const styles = {
-  paper: {
-    padding: 20,
-    borderRadius: 10
-  },
-  form: {
-    margin: "0 auto",
-    textAlign: "center"
-  },
-  image: {
-    display: "block",
-    margin: "20px auto 20px auto"
-  },
-  pageTitle: {
-    fontFamily: "'Courgette', cursive",
-    fontWeight: "Bold",
-    fontSize: "4.8rem",
-    margin: "10px auto 10px auto",
-    color: "#00bcd4"
-  },
-  textField: {
-    margin: "10px auto 10px auto"
-  },
-  button: {
-    marginTop: 20,
-    position: "relative" // because of progress
-  },
-  customError: {
-    color: "red",
-    fontSize: "0.8rem",
-    marginTop: "10"
-  },
-  progress: {
-    position: "absolute"
-  }
-};
+const styles = theme => ({
+  ...theme.login
+});
 
 class login extends Component {
   constructor() {

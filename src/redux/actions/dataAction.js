@@ -112,9 +112,13 @@ export const deleteRoar = roarId => dispatch => {
       `https://us-central1-socialapp-dfb2e.cloudfunctions.net/api/roar/${roarId}`
     )
     .then(() => {
+      console.log("here is the delete id : " + roarId);
       dispatch({ type: DELETE_ROAR, payload: roarId });
     })
-    .catch(err => console.log(err));
+    .catch(err => {
+      console.log(err);
+      console.log("here is the delete error : " + err);
+    });
 };
 
 export const getRoar = roarId => dispatch => {

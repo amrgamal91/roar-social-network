@@ -12,64 +12,9 @@ import LocationOn from "@material-ui/icons/LocationOn";
 import LinkIcon from "@material-ui/icons/Link";
 import CalendarToday from "@material-ui/icons/CalendarToday";
 
-const styles = {
-  profile: {
-    "& .image-wrapper": {
-      textAlign: "center",
-      position: "relative",
-      "& button": {
-        position: "absolute",
-        top: "80%",
-        left: "70%"
-      }
-    },
-    "& .profile-image": {
-      width: 200,
-      height: 200,
-      objectFit: "cover",
-      maxWidth: "100%",
-      borderRadius: "50%"
-    },
-    "& .profile-details": {
-      "& span, svg": {
-        verticalAlign: "middle"
-      },
-      "& a": {
-        color: "#008394"
-      }
-    },
-
-    "& .userName": {
-      display: "block",
-      textAlign: "center",
-      marginLeft: " auto",
-      marignRight: "auto"
-    },
-    "& svg.button": {
-      "&:hover": {
-        cursor: "pointer"
-      }
-    }
-  },
-  handle: {
-    height: 20,
-    // backgroundColor: theme.palette.primary.main,
-    width: 60,
-    margin: "0 auto 7px auto"
-  },
-  fullLine: {
-    height: 15,
-    backgroundColor: "rgba(0,0,0,0.6)",
-    width: "100%",
-    marginBottom: 10
-  },
-  halfLine: {
-    height: 15,
-    backgroundColor: "rgba(0,0,0,0.6)",
-    width: "50%",
-    marginBottom: 10
-  }
-};
+const styles = theme => ({
+  ...theme.profileSkeleton
+});
 
 const ProfileSkeleton = props => {
   const { classes } = props;

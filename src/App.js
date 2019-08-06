@@ -4,7 +4,6 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 //MUI
 import MuiThemeProvider from "@material-ui/core/styles/MuiThemeProvider";
 import createMuiTheme from "@material-ui/core/styles/createMuiTheme";
-import CssBaseline from "@material-ui/core/CssBaseline";
 
 //Redux
 import { Provider } from "react-redux";
@@ -32,11 +31,11 @@ const theme = createMuiTheme(themeFile);
 // instal jwt-decode library to decode the token
 
 const token = localStorage.getItem("FireBaseIdToken");
-console.log("token is : " + token);
+// console.log("token is : " + token);
 
 if (token) {
   const decodedToken = jwtDecode(token);
-  console.log("here is the decoded token : ", decodedToken);
+  // console.log("here is the decoded token : ", decodedToken);
   if (decodedToken.exp * 1000 < Date.now()) {
     store.dispatch(logoutUser());
     window.location.href = "./login";

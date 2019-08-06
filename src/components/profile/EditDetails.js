@@ -16,16 +16,9 @@ import TextField from "@material-ui/core/TextField";
 //Redux
 import { connect } from "react-redux";
 import { editUserDetails } from "../../redux/actions/userActions";
-
-const styles = {
-  button: { float: "right" },
-  paper: {
-    padding: 20
-  },
-  title: {
-    color: "#00bcd4"
-  }
-};
+const styles = theme => ({
+  ...theme.editDetails
+});
 
 class EditDetails extends Component {
   state = {
@@ -109,6 +102,7 @@ class EditDetails extends Component {
                 label="Bio"
                 multiline
                 rows="3"
+                inputProps={{ maxLength: 250 }}
                 placeholder="A Short bio about yourself"
                 className={classes.textField}
                 value={this.state.bio}

@@ -25,34 +25,9 @@ import ChatIcon from "@material-ui/icons/Chat";
 import { connect } from "react-redux";
 import { getRoar, clearErrors } from "../../redux/actions/dataAction";
 
-const styles = {
-  invisibleSeparator: {
-    border: "none",
-    margin: 4
-  },
-  profileImage: {
-    maxWidth: 180,
-    height: 180,
-    borderRadius: "50%",
-    objectFit: "cover"
-  },
-  dialogContent: {
-    padding: 20
-  },
-  closeButton: {
-    position: "absolute",
-    left: "90%"
-  },
-  expandButton: {
-    position: "absolute",
-    left: "90%"
-  },
-  spinnerDiv: {
-    textAlign: "center",
-    marginTop: 50,
-    marginBottom: 50
-  }
-};
+const styles = theme => ({
+  ...theme.roarDialog
+});
 
 class RoarDialog extends Component {
   state = {
@@ -118,12 +93,13 @@ class RoarDialog extends Component {
         </Grid>
         <Grid item sm={8}>
           <Typography
+            className={classes.userHandle}
             component={Link}
             color="primary"
             variant="h5"
             to={`/user/${userHandle}`}
           >
-            @{userHandle}
+            {userHandle}
           </Typography>
           <hr className={classes.invisibleSeparator} />
           <Typography variant="body2" color="textSecondary">

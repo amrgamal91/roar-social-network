@@ -17,43 +17,9 @@ import Paper from "@material-ui/core/Paper";
 import { connect } from "react-redux";
 import { signupUser } from "../redux/actions/userActions";
 
-const styles = {
-  paper: {
-    padding: 20,
-    borderRadius: 10
-  },
-  form: {
-    // justifyContent: "center",
-    margin: "0 auto",
-    textAlign: "center"
-  },
-  image: {
-    margin: "20px auto 20px auto"
-  },
-  pageTitle: {
-    fontFamily: "'Courgette', cursive",
-    fontWeight: "Bold",
-    fontSize: "4.8rem",
-    margin: "10px auto 10px auto",
-    color: "#00bcd4"
-  },
-  textField: {
-    margin: "10px auto 10px auto"
-  },
-  button: {
-    marginTop: 20,
-    marginBottom: 10,
-    position: "relative" // because of progress
-  },
-  customError: {
-    color: "red",
-    fontSize: "0.8rem",
-    marginTop: "10"
-  },
-  progress: {
-    position: "absolute"
-  }
-};
+const styles = theme => ({
+  ...theme.signup
+});
 
 class signup extends Component {
   constructor() {

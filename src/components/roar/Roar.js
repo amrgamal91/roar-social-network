@@ -20,20 +20,9 @@ import CustomButton from "../../util/CustomButton";
 import DeleteRoar from "./DeleteRoar";
 import RoarDialog from "./RoarDialog";
 
-const styles = {
-  card: {
-    position: "relative",
-    display: "flex",
-    marginBottom: 20
-  },
-  image: {
-    minWidth: 200
-  },
-  content: {
-    padding: 25,
-    objectFit: "cover"
-  }
-};
+const styles = theme => ({
+  ...theme.roar
+});
 
 class Roar extends Component {
   /** */
@@ -80,6 +69,7 @@ class Roar extends Component {
         />
         <CardContent className={classes.content}>
           <Typography
+            className={classes.userhandle}
             variant="h5"
             component={Link}
             to={`/user/${userHandle}`}

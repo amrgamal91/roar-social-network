@@ -18,60 +18,9 @@ import CloseIcon from "@material-ui/icons/Close";
 import { connect } from "react-redux";
 import { postRoar, clearErrors } from "../../redux/actions/dataAction";
 
-const styles = {
-  paper: {
-    padding: 10
-  },
-  profile: {
-    "& .image-wrapper": {
-      textAlign: "center",
-      position: "relative",
-      "& button": {
-        position: "absolute",
-        top: "80%",
-        left: "70%"
-      }
-    },
-    "& .profile-image": {
-      width: 200,
-      height: 200,
-      objectFit: "cover",
-      maxWidth: "100%",
-      borderRadius: "50%"
-    },
-    "& .profile-details": {
-      textAlign: "center",
-      "& span, svg": {
-        verticalAlign: "middle"
-      },
-      "& a": {
-        color: "#00bcd4"
-      }
-    },
-    "& hr": {
-      border: "none",
-      margin: "0 0 10px 0"
-    },
-    "& svg.button": {
-      "&:hover": {
-        cursor: "pointer"
-      }
-    }
-  },
-  submitButton: {
-    position: "relative",
-    float: "right",
-    marginTop: 10
-  },
-  progressSpinner: {
-    position: "absolute"
-  },
-  closeButton: {
-    position: "absolute",
-    left: "91%",
-    top: "6%"
-  }
-};
+const styles = theme => ({
+  ...theme.postRoar
+});
 
 class PostRoar extends Component {
   state = {

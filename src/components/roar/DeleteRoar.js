@@ -14,13 +14,9 @@ import DeleteOutline from "@material-ui/icons/DeleteOutline";
 import { connect } from "react-redux";
 import { deleteRoar } from "../../redux/actions/dataAction";
 
-const styles = {
-  deleteButton: {
-    position: "absolute",
-    left: "90%",
-    top: "10%"
-  }
-};
+const styles = theme => ({
+  ...theme.deleteRoar
+});
 
 class DeleteRoar extends Component {
   state = {

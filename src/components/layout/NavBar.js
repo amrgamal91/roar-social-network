@@ -3,7 +3,6 @@ import React, { Component, Fragment } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
-import CustomButton from "../../util/CustomButton";
 import PostRoar from "../roar/PostRoar";
 import logo from "../../images/brandLogo.png";
 
@@ -17,24 +16,9 @@ import Avatar from "@material-ui/core/Avatar";
 
 // Icons
 import Notifications from "./Notifications";
-
-const styles = {
-  root: {
-    flexGrow: 1
-  },
-  logo: {
-    marginRight: 15,
-    marginTop: 15
-  },
-  title: {
-    fontFamily: "'Courgette', cursive",
-    display: "flex",
-    justifyContent: "flex-start",
-    color: "#fff",
-    fontWeight: "Bold",
-    fontSize: "2.8rem"
-  }
-};
+const styles = theme => ({
+  ...theme.styleToSpread
+});
 
 class Navbar extends Component {
   render() {
@@ -43,7 +27,7 @@ class Navbar extends Component {
     return (
       <AppBar>
         <Toolbar>
-          <div class="brand">
+          <div className="brand">
             <Link to="/">
               <Avatar alt="logo" src={logo} className={classes.logo} />
             </Link>

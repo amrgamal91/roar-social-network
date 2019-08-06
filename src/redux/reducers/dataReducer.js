@@ -46,8 +46,10 @@ export default function(state = initialState, action) {
         ...state
       };
     case DELETE_ROAR:
-      index = state.roars.findIndex(roar => roar.roarId === action.payload);
-      state.roars.splice(index, 1);
+      let roarIndex = state.roars.findIndex(
+        roar => roar.roarId === action.payload
+      );
+      state.roars.splice(roarIndex, 1);
       return { ...state };
     case POST_ROAR:
       return { ...state, roars: [action.payload, ...state.roars] };
