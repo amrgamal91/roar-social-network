@@ -77,7 +77,30 @@ export const signupUser = (newUserData, history) => dispatch => {
       newUserData
     )
     .then(res => {
+      // console.log("signUp data : " + JSON.stringify(res));
       setAuthorizationHeader(res.data.token);
+      dispatch(getUserData());
+      dispatch({ type: CLEAR_ERRORS });
+      history.push("/");
+    })
+    .catch(err => {
+      dispatch({
+        type: SET_ERRORS,
+        payload: err.response.data
+      });
+    });
+};
+
+export const handleSocialUser = (newUserData, history) => dispatch => {
+  dispatch({ type: LOADING_UI });
+  axios
+    .post(
+      "https://us-central1-socialapp-dfb2e.cloudfunctions.net/api/handleSocialUser",
+      newUserData
+    )
+    .then(res => {
+      // console.log("signUp data : " + JSON.stringify(res));
+      setAuthorizationHeader(newUserData.token);
       dispatch(getUserData());
       dispatch({ type: CLEAR_ERRORS });
       history.push("/");
@@ -146,9 +169,9 @@ export const markNotificationsRead = notificationIds => dispatch => {
  * create token variable in browser localStorage,then
  * set the authorization header value in request (Token)
  */
-const setAuthorizationHeader = token => {
+export const setAuthorizationHeader = token => {
   const FBIdToken = `Bearer ${token}`;
-  console.log(`here is the Token value : ${token}`);
+  // console.log(`here is the Token value : ${token}`);
   localStorage.setItem("FireBaseIdToken", FBIdToken);
   axios.defaults.headers.common["Authorization"] = FBIdToken;
 };

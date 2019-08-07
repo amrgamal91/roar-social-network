@@ -15,9 +15,18 @@ import Paper from "@material-ui/core/Paper";
 //Redux stuff
 import { connect } from "react-redux";
 import { loginUser } from "../redux/actions/userActions";
+import { handleSocialUser } from "../redux/actions/userActions";
+
+import firebase from "firebase";
+import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth";
 
 const styles = theme => ({
   ...theme.login
+});
+
+firebase.initializeApp({
+  apiKey: "AIzaSyAMVIE451Q0Fj_oz9kQHwWUF-hz5HDodZs",
+  authDomain: "socialapp-dfb2e.firebaseapp.com"
 });
 
 class login extends Component {
@@ -29,6 +38,52 @@ class login extends Component {
       errors: {}
     };
   }
+  uiConfig = {
+    signInFlow: "popup",
+    signInOptions: [
+      firebase.auth.GoogleAuthProvider.PROVIDER_ID,
+      firebase.auth.FacebookAuthProvider.PROVIDER_ID
+    ],
+    callbacks: {
+      signInSuccessWithAuthResult: (credential, redirectUrl) => {
+        let history = this.props.history;
+        // console.log(
+        //   "credentials : " + JSON.stringify(credential.user.displayName)
+        // );
+        // console.log("user data: " + JSON.stringify(credential.user));
+
+        credential.user.getIdToken().then(token => {
+          // console.log("credentials: " + JSON.stringify(credential));
+          // make api call to backend
+          const newUserData = {
+            email: credential.user.email,
+            handle: credential.user.displayName,
+            uid: credential.user.uid,
+            token: token
+            // imageUrl: credential.user.photoURL
+          };
+          // console.log("Tokeeen: " + token);
+          // console.log("user data: " + JSON.stringify(newUserData));
+          // console.log("history: " + JSON.stringify(history));
+
+          // setAuthorizationHeader(token);
+          this.props.handleSocialUser(newUserData, history);
+        });
+
+        // this.props.history.push("/");
+      }
+      // signInSuccessWithAuthResult: (authResult, redirectUrl) => {
+      //   console.log(
+      //     "signInSuccessWithAuthResult:",
+      //     JSON.stringify(authResult.credential.accessToken)
+      //   );
+
+      //   setAuthorizationHeader(authResult.credential.accessToken);
+      //   this.props.history.push("/");
+      //   return false;
+      // }
+    }
+  };
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.UI.errors) {
@@ -60,10 +115,9 @@ class login extends Component {
     const { errors } = this.state;
 
     return (
-      <Grid container className={classes.form} sm={4} xs={12}>
+      <Grid container justify="center">
         <Paper className={classes.paper}>
-          <Grid item sm />
-          <Grid item sm>
+          <Grid item sm className={classes.form}>
             <img src={AppIcon} alt="lion" className={classes.image} />
             <Typography variant="h2" className={classes.pageTitle}>
               Login
@@ -116,7 +170,10 @@ class login extends Component {
               </small>
             </form>
           </Grid>
-          <Grid item sm />
+          <StyledFirebaseAuth
+            uiConfig={this.uiConfig}
+            firebaseAuth={firebase.auth()}
+          />
         </Paper>
       </Grid>
     );
@@ -136,7 +193,8 @@ const mapStateToProps = state => ({
 });
 
 const mapActionsToProps = {
-  loginUser
+  loginUser,
+  handleSocialUser
 };
 
 export default connect(
