@@ -59,29 +59,13 @@ class login extends Component {
             email: credential.user.email,
             handle: credential.user.displayName,
             uid: credential.user.uid,
-            token: token
-            // imageUrl: credential.user.photoURL
+            token: token,
+            imageUrl: credential.user.photoURL
           };
-          // console.log("Tokeeen: " + token);
-          // console.log("user data: " + JSON.stringify(newUserData));
-          // console.log("history: " + JSON.stringify(history));
 
-          // setAuthorizationHeader(token);
           this.props.handleSocialUser(newUserData, history);
         });
-
-        // this.props.history.push("/");
       }
-      // signInSuccessWithAuthResult: (authResult, redirectUrl) => {
-      //   console.log(
-      //     "signInSuccessWithAuthResult:",
-      //     JSON.stringify(authResult.credential.accessToken)
-      //   );
-
-      //   setAuthorizationHeader(authResult.credential.accessToken);
-      //   this.props.history.push("/");
-      //   return false;
-      // }
     }
   };
 
