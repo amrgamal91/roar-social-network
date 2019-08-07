@@ -21,11 +21,11 @@ export class home extends Component {
       <RoarSkeleton />
     );
     return (
-      <Grid container spacing={8}>
-        <Grid item sm={8} xs={12}>
+      <Grid container spacing={8} className="home">
+        <Grid item sm={8} xs={12} className="roarSection">
           {recentRoarsMarkup}
         </Grid>
-        <Grid item sm={4} xs={12}>
+        <Grid item sm={4} xs={12} className="profileSection">
           <Profile />
         </Grid>
       </Grid>

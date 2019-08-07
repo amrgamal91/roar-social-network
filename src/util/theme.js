@@ -44,6 +44,13 @@ const theme = createMuiTheme({
       paddingRight: 20,
       paddingLeft: 20
     },
+    paperHints: {
+      order: 1,
+      paddingTop: 10,
+      paddingBottom: 10,
+      paddingRight: 20,
+      paddingLeft: 20
+    },
     profile: {
       "& .image-wrapper": {
         textAlign: "center",
@@ -301,7 +308,7 @@ const theme = createMuiTheme({
       marginBottom: 20
     },
     image: {
-      minWidth: 200
+      minWidth: "30%"
     },
     content: {
       padding: 25,
