@@ -60,9 +60,11 @@ class RoarDialog extends Component {
   };
 
   handleClose = () => {
-    window.history.pushState(null, null, this.state.oldPath);
+    window.history.pushState(this.state, null, this.state.oldPath);
     this.setState({ open: false });
+
     this.props.clearErrors();
+    this.forceUpdate();
   };
 
   render() {

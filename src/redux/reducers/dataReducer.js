@@ -40,10 +40,11 @@ export default function(state = initialState, action) {
       );
       state.roars[index] = action.payload;
       if (state.roar.roarId === action.payload.roarId) {
-        state.roar = action.payload;
+        state.roar.likeCount = action.payload.likeCount; //bugfix: only update the likecount not the whole roar
       }
       return {
         ...state
+        // likeCount: state.roar.likeCount + 1 //bugfix: update like counter in the roar dialog immediately
       };
     case DELETE_ROAR:
       let roarIndex = state.roars.findIndex(
@@ -58,9 +59,11 @@ export default function(state = initialState, action) {
         ...state,
         roar: {
           ...state.roar,
+          commentCount: state.roar.commentCount + 1, //bugfix: update like counter in the roar dialog immediately
           comments: [action.payload, ...state.roar.comments]
         }
       };
+
     default:
       return state;
   }

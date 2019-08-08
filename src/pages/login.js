@@ -17,7 +17,9 @@ import { connect } from "react-redux";
 import { loginUser } from "../redux/actions/userActions";
 import { handleSocialUser } from "../redux/actions/userActions";
 
-import firebase from "firebase";
+import firebase from "firebase/app";
+import "firebase/app";
+import "firebase/auth";
 import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth";
 
 const styles = theme => ({

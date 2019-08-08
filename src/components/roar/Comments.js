@@ -22,52 +22,54 @@ class Comments extends Component {
     const { comments, classes } = this.props;
     return (
       <Grid container>
-        {comments.map((comment, index) => {
-          const { body, createdAt, userImage, userHandle } = comment;
-          return (
-            <Fragment key={createdAt}>
-              <Grid item sm={12} className={classes.commentBlock}>
-                <Grid container>
-                  <Grid item sm={2}>
-                    <img
-                      src={userImage}
-                      alt="comment"
-                      className={classes.commentImage}
-                    />
+        {comments && comments.length > 0
+          ? comments.map((comment, index) => {
+              const { body, createdAt, userImage, userHandle } = comment;
+              return (
+                <Fragment key={createdAt}>
+                  <Grid item sm={12} className={classes.commentBlock}>
+                    <Grid container>
+                      <Grid item sm={2}>
+                        <img
+                          src={userImage}
+                          alt="comment"
+                          className={classes.commentImage}
+                        />
+                      </Grid>
+                      <Grid item sm={9}>
+                        <div className={classes.commentData}>
+                          <Typography
+                            className={classes.userHandle}
+                            variant="h5"
+                            component={Link}
+                            to={`/user/${userHandle}`}
+                            color="primary"
+                          >
+                            {userHandle}
+                          </Typography>
+                          <Typography variant="body2" color="textSecondary">
+                            {dayjs(createdAt).format("h:mm a, MMMM DD YYYY")}
+                          </Typography>
+                          <hr className={classes.invisibleSeparator} />
+                          <Typography variabnt="body1">{body}</Typography>
+                        </div>
+                      </Grid>
+                    </Grid>
                   </Grid>
-                  <Grid item sm={9}>
-                    <div className={classes.commentData}>
-                      <Typography
-                        className={classes.userHandle}
-                        variant="h5"
-                        component={Link}
-                        to={`/user/${userHandle}`}
-                        color="primary"
-                      >
-                        {userHandle}
-                      </Typography>
-                      <Typography variant="body2" color="textSecondary">
-                        {dayjs(createdAt).format("h:mm a, MMMM DD YYYY")}
-                      </Typography>
-                      <hr className={classes.invisibleSeparator} />
-                      <Typography variabnt="body1">{body}</Typography>
-                    </div>
-                  </Grid>
-                </Grid>
-              </Grid>
-              {index !== comments.length - 1 && (
-                <hr className={classes.visibleSeparator} />
-              )}
-            </Fragment>
-          );
-        })}
+                  {index !== comments.length - 1 && (
+                    <hr className={classes.visibleSeparator} />
+                  )}
+                </Fragment>
+              );
+            })
+          : null}
       </Grid>
     );
   }
 }
 
-Comments.propTypes = {
-  comments: PropTypes.array.isRequired
-};
+// Comments.propTypes = {
+//   comments: PropTypes.array.isRequired
+// };
 
 export default withStyles(styles)(Comments);

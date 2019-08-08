@@ -26,7 +26,7 @@ export const loginUser = (userData, history) => dispatch => {
       setAuthorizationHeader(res.data.idtoken);
       dispatch(getUserData());
       dispatch({ type: CLEAR_ERRORS });
-      history.push("/");
+      history.push("/"); //optional as in authRout it redirected to "/"
     })
     .catch(err => {
       dispatch({
