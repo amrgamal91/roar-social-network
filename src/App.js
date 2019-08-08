@@ -28,6 +28,8 @@ import "./App.css";
 
 const theme = createMuiTheme(themeFile);
 
+axios.defaults.baseURL =
+  "https://us-central1-socialapp-dfb2e.cloudfunctions.net/api";
 // instal jwt-decode library to decode the token
 
 const token = localStorage.getItem("FireBaseIdToken");

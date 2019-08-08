@@ -19,8 +19,7 @@ import {
   LOADING_UI,
   SET_ROAR,
   STOP_LOADING_UI,
-  SUBMIT_COMMENT,
-  UPDATE_STATE
+  SUBMIT_COMMENT
 } from "../types";
 
 import axios from "axios";
@@ -133,7 +132,7 @@ export const getRoar = roarId => dispatch => {
         type: SET_ROAR,
         payload: res.data
       });
-      console.log("data returned : " + JSON.stringify(res.data));
+      // console.log("data returned : " + JSON.stringify(res.data));
       dispatch({ type: STOP_LOADING_UI });
     })
     .catch(err => console.log(err));
