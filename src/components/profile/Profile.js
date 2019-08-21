@@ -116,7 +116,7 @@ class Profile extends Component {
               <hr className={classes.invisibleSeparator} />
               {website && (
                 <Fragment>
-                  <div style={{ display: "inline-flex" }}>
+                  <div className={classes.profileInfoItem}>
                     <LinkIcon className={classes.userDetailsIcons} />
                     <Typography variant="body2" className={classes.labels}>
                       WebPage

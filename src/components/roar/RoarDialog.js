@@ -109,12 +109,14 @@ class RoarDialog extends Component {
           </Typography>
           <hr className={classes.invisibleSeparator} />
           <Typography variant="body1">{body}</Typography>
-          <LikeButton roarId={roarId} />
-          <span>{likeCount} likes</span>
-          <CustomButton tip="comments">
-            <ChatIcon color="primary" />
-          </CustomButton>
-          <span>{commentCount} comments</span>
+          <div className={classes.roarbuttons}>
+            <LikeButton roarId={roarId} />
+            <span>{likeCount} likes</span>
+            <CustomButton tip="comments">
+              <ChatIcon color="primary" />
+            </CustomButton>
+            <span>{commentCount} comments</span>
+          </div>
         </Grid>
         <hr className={classes.visibleSeparator} />
         <CommentForm roarId={roarId} />

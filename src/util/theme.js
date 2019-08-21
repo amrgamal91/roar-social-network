@@ -53,6 +53,10 @@ const theme = createMuiTheme({
       paddingRight: 20,
       paddingLeft: 20
     },
+    profileInfoItem: {
+      display: "inline-flex",
+      flexWrap: "wrap"
+    },
     profile: {
       "& .image-wrapper": {
         textAlign: "center",
@@ -165,6 +169,10 @@ const theme = createMuiTheme({
       marginLeft: 5,
       marginRight: 5
     },
+    profileInfoItem: {
+      display: "inline-flex",
+      flexWrap: "wrap"
+    },
     profile: {
       "& .image-wrapper": {
         textAlign: "center",
@@ -235,7 +243,9 @@ const theme = createMuiTheme({
     commentBlock: {
       border: "2px solid rgb(0,	188,	212)",
       borderRadius: 5,
-      padding: 5
+      padding: 5,
+      margin: 5,
+      width: "100%"
     },
     userHandle: {
       fontFamily: "'Courgette', cursive"
@@ -325,6 +335,10 @@ const theme = createMuiTheme({
       fontSize: "1.8rem",
       margin: "10px auto 10px auto",
       color: "#00bcd4"
+    },
+    roarbuttons: {
+      display: "inline-flex",
+      alignItems: "center"
     }
   },
 
@@ -357,6 +371,9 @@ const theme = createMuiTheme({
     },
     userHandle: {
       fontFamily: "'Courgette', cursive"
+    },
+    roarbuttons: {
+      // display: "inline-block"
     }
   },
 

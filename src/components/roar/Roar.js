@@ -85,15 +85,19 @@ class Roar extends Component {
           </Typography>
 
           <Typography variant="body1">{body}</Typography>
+          <div className={classes.roarbuttons}>
+            <LikeButton roarId={roarId} />
+            <span>
+              {likeCount} {likeCount === 1 ? "Like" : "Likes"}
+            </span>
 
-          <LikeButton roarId={roarId} />
-          <span>{likeCount} Likes</span>
-
-          <CustomButton tip="Comments">
-            <ChatIcon color="primary" />
-          </CustomButton>
-          <span>{commentCount} Comments</span>
-
+            <CustomButton tip="Comments">
+              <ChatIcon color="primary" />
+            </CustomButton>
+            <span>
+              {commentCount} {commentCount === 1 ? "Comment" : "Comments"}
+            </span>
+          </div>
           <RoarDialog
             roarId={roarId}
             userHandle={userHandle}
