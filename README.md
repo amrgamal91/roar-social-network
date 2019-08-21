@@ -11,7 +11,7 @@ just download the source code and then run : `npm start`
 - password : 123456
 
 ## screenshots : 
-[1.](https://github.com/amrgamal91/roar-social-network/blob/master/screenshots/1.png)
-[2.](https://github.com/amrgamal91/roar-social-network/blob/master/screenshots/2.png)
-[3.](https://github.com/amrgamal91/roar-social-network/blob/master/screenshots/3.png)
-[4.](https://github.com/amrgamal91/roar-social-network/blob/master/screenshots/4.png)
+![1.](/screenshots/1.png)
+![2.](/screenshots/2.png)
+![3.](/screenshots/3.png)
+![4.](/screenshots/4.png)
