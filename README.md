@@ -7,5 +7,5 @@ Roar is a social network community like twitter with some features where user ca
 
 ## installation : 
 just download the source code and then run : `npm start`
-username : user@gmail.com
-password : 123456
+- username : user@gmail.com
+- password : 123456
