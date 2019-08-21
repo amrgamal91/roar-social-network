@@ -42,7 +42,9 @@ const theme = createMuiTheme({
       paddingTop: 10,
       paddingBottom: 10,
       paddingRight: 20,
-      paddingLeft: 20
+      paddingLeft: 20,
+      marginLeft: 5,
+      marginRight: 5
     },
     paperHints: {
       order: 1,
@@ -159,7 +161,9 @@ const theme = createMuiTheme({
       paddingTop: 10,
       paddingBottom: 10,
       paddingRight: 20,
-      paddingLeft: 20
+      paddingLeft: 20,
+      marginLeft: 5,
+      marginRight: 5
     },
     profile: {
       "& .image-wrapper": {
@@ -305,7 +309,9 @@ const theme = createMuiTheme({
     card: {
       position: "relative",
       display: "flex",
-      marginBottom: 20
+      marginBottom: 20,
+      marginLeft: 5,
+      marginRight: 5
     },
     image: {
       minWidth: "30%"
@@ -491,7 +497,9 @@ const theme = createMuiTheme({
   roarSkeleton: {
     card: {
       display: "flex",
-      marginBottom: 20
+      marginBottom: 20,
+      marginLeft: 5,
+      marginRight: 5
     },
     cardContent: {
       width: "100%",
