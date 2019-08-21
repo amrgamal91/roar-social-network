@@ -38,8 +38,10 @@ a {
   }
   .roarSection {
     order: 2;
+    margin: 2px;
   }
   .profileSection {
     order: 1;
+    margin: 2px;
   }
 }
