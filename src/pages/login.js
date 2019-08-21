@@ -21,7 +21,7 @@ import firebase from "firebase/app";
 import "firebase/app";
 import "firebase/auth";
 import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth";
-import apiConfig from "../util/apikeys";
+import apiConfig from "../util/apiConfig";
 const styles = theme => ({
   ...theme.login
 });
