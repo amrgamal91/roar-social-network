@@ -1,5 +1,10 @@
 import React, { Component } from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch,
+  Redirect
+} from "react-router-dom";
 
 //MUI
 import MuiThemeProvider from "@material-ui/core/styles/MuiThemeProvider";
@@ -66,6 +71,7 @@ class App extends Component {
                   path="/users/:handle/roar/:roarId"
                   component={user}
                 />
+                <Redirect from="/roar-social-network" exact to="/" />
               </Switch>
             </div>
           </Router>
