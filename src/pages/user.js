@@ -58,10 +58,10 @@ class user extends Component {
     );
     return (
       <Grid container spacing={8}>
-        <Grid item sm={8} xs={12}>
+        <Grid item sm={8} xs={12} className="roarSection">
           {roarsMarkup}
         </Grid>
-        <Grid item sm={4} xs={12}>
+        <Grid item sm={4} xs={12} className="profileSection">
           {this.state.profile === null ? (
             <ProfileSkeleton />
           ) : (
