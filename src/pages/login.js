@@ -21,14 +21,14 @@ import firebase from "firebase/app";
 import "firebase/app";
 import "firebase/auth";
 import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth";
-
+import apiConfig from "../util/apikeys";
 const styles = theme => ({
   ...theme.login
 });
 
 firebase.initializeApp({
-  apiKey: "AIzaSyAMVIE451Q0Fj_oz9kQHwWUF-hz5HDodZs",
-  authDomain: "socialapp-dfb2e.firebaseapp.com"
+  apiKey: apiConfig.apiKey,
+  authDomain: apiConfig.authDomain
 });
 
 class login extends Component {
