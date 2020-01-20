@@ -34,12 +34,12 @@ import "./App.css";
 //google Analytics
 import ReactGA from "react-ga";
 
-function initializeReactGA() {
-  ReactGA.initialize("UA-149180300-1");
-  ReactGA.pageview("/signup");
-  ReactGA.pageview("/");
-  ReactGA.pageview("/login");
-}
+// function initializeReactGA() {
+ReactGA.initialize("UA-149180300-1");
+ReactGA.pageview("/signup");
+ReactGA.pageview("/");
+ReactGA.pageview("/login");
+// }
 
 const theme = createMuiTheme(themeFile);
 
@@ -64,7 +64,7 @@ if (token) {
 }
 
 class App extends Component {
-  initializeReactGA();
+  // initializeReactGA();
   render() {
     return (
       <MuiThemeProvider theme={theme}>
