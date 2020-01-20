@@ -64,6 +64,7 @@ if (token) {
 }
 
 class App extends Component {
+  initializeReactGA();
   render() {
     return (
       <MuiThemeProvider theme={theme}>
