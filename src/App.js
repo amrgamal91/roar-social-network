@@ -31,6 +31,14 @@ import axios from "axios";
 import jwtDecode from "jwt-decode";
 import "./App.css";
 
+//google Analytics
+import ReactGA from "react-ga";
+
+function initializeReactGA() {
+  ReactGA.initialize("UA-149180300-1");
+  ReactGA.pageview("/signup");
+}
+
 const theme = createMuiTheme(themeFile);
 
 axios.defaults.baseURL =
