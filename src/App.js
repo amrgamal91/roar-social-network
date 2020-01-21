@@ -68,9 +68,21 @@ if (token) {
 class App extends Component {
   // initializeReactGA();
   render() {
+    // ReactGA.pageview("/signup");
+    // ReactGA.pageview("/");
+    // ReactGA.pageview("/login");
+
+
+    ReactGA.initialize('UA-149180300-1',{
+      debug: this.appData.env === "development",
+      titleCase: false
+    });
+    ReactGA.set({ appVersion: this.appData.version});
+    ReactGA.set({ page: window.location.pathname });
+    // ReactGA.pageview(window.location.pathname);
     ReactGA.pageview("/signup");
-    ReactGA.pageview("/");
-    ReactGA.pageview("/login");
+
+
     return (
       <MuiThemeProvider theme={theme}>
         <Provider store={store}>
