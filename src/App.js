@@ -38,9 +38,9 @@ import ReactGA from "react-ga";
 ReactGA.initialize("UA-149180300-1");
 ReactGA.pageview(window.location.pathname + window.location.search);
 
-// ReactGA.pageview("/signup");
-// ReactGA.pageview("/");
-// ReactGA.pageview("/login");
+ReactGA.pageview("/signup");
+ReactGA.pageview("/");
+ReactGA.pageview("/login");
 
 
 // }
