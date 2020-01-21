@@ -36,6 +36,8 @@ import ReactGA from "react-ga";
 
 // function initializeReactGA() {
 ReactGA.initialize("UA-149180300-1");
+ReactGA.pageview(window.location.pathname + window.location.search);
+
 // ReactGA.pageview("/signup");
 // ReactGA.pageview("/");
 // ReactGA.pageview("/login");
@@ -66,23 +68,7 @@ if (token) {
 }
 
 class App extends Component {
-  // initializeReactGA();
   render() {
-    // ReactGA.pageview("/signup");
-    // ReactGA.pageview("/");
-    // ReactGA.pageview("/login");
-
-
-    ReactGA.initialize('UA-149180300-1',{
-      debug: this.appData.env === "development",
-      titleCase: false
-    });
-    ReactGA.set({ appVersion: this.appData.version});
-    ReactGA.set({ page: window.location.pathname });
-    // ReactGA.pageview(window.location.pathname);
-    ReactGA.pageview("/signup");
-
-
     return (
       <MuiThemeProvider theme={theme}>
         <Provider store={store}>
