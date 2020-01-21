@@ -36,9 +36,11 @@ import ReactGA from "react-ga";
 
 // function initializeReactGA() {
 ReactGA.initialize("UA-149180300-1");
-ReactGA.pageview("/signup");
-ReactGA.pageview("/");
-ReactGA.pageview("/login");
+// ReactGA.pageview("/signup");
+// ReactGA.pageview("/");
+// ReactGA.pageview("/login");
+
+
 // }
 
 const theme = createMuiTheme(themeFile);
@@ -66,6 +68,9 @@ if (token) {
 class App extends Component {
   // initializeReactGA();
   render() {
+    ReactGA.pageview("/signup");
+    ReactGA.pageview("/");
+    ReactGA.pageview("/login");
     return (
       <MuiThemeProvider theme={theme}>
         <Provider store={store}>
