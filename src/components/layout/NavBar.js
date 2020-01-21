@@ -28,11 +28,11 @@ class Navbar extends Component {
       <AppBar>
         <Toolbar>
           <div className="brand">
-            <Link to="/">
+            <Link to="/roar-social-network">
               <Avatar alt="logo" src={logo} className={classes.logo} />
             </Link>
 
-            <Link to="/">
+            <Link to="/roar-social-network">
               <Typography className={classes.title}>RoOoar</Typography>
             </Link>
           </div>

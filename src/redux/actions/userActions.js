@@ -26,7 +26,7 @@ export const loginUser = (userData, history) => dispatch => {
       setAuthorizationHeader(res.data.idtoken);
       dispatch(getUserData());
       dispatch({ type: CLEAR_ERRORS });
-      history.push("/"); //optional as in authRout it redirected to "/"
+      history.push("/roar-social-network"); //optional as in authRout it redirected to "/"
     })
     .catch(err => {
       dispatch({
@@ -83,7 +83,7 @@ export const signupUser = (newUserData, history) => dispatch => {
       setAuthorizationHeader(res.data.token);
       dispatch(getUserData());
       dispatch({ type: CLEAR_ERRORS });
-      history.push("/");
+      history.push("/roar-social-network");
     })
     .catch(err => {
       dispatch({
@@ -105,7 +105,7 @@ export const handleSocialUser = (newUserData, history) => dispatch => {
       setAuthorizationHeader(newUserData.token);
       dispatch(getUserData());
       dispatch({ type: CLEAR_ERRORS });
-      history.push("/");
+      history.push("/roar-social-network");
     })
     .catch(err => {
       dispatch({
