@@ -85,7 +85,7 @@ class App extends Component {
                   path="/users/:handle/roar/:roarId"
                   component={user}
                 />
-                {/* <Redirect from="/roar-social-network" exact to="/" /> */}
+                <Redirect from="/" exact to="/roar-social-network" />
               </Switch>
             </div>
            
