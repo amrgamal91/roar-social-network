@@ -14,7 +14,6 @@
     "express-ws": "^4.0.0",
     "firebase": "^6.3.4",
     "firebaseui": "^4.1.0",
-    "gh-pages": "^2.1.1",
     "jwt-decode": "^2.2.0",
     "lodash": "^4.17.15",
     "material-ui": "^0.20.2",
@@ -52,5 +51,8 @@
       "last 1 safari version"
     ],
     "proxy": "https://us-central1-socialapp-dfb2e.cloudfunctions.net/api"
+  },
+  "devDependencies": {
+    "gh-pages": "^2.2.0"
   }
 }

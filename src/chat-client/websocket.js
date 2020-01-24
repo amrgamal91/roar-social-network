@@ -16,7 +16,8 @@ let onMessageCallback
 // to the server
 export const startWebsocketConnection = () => {
   // A new Websocket connection is initialized with the server
-  const ws = new window.WebSocket('ws://' + host + '/chat') || {}
+  const protocol=window.location.protocol === 'https:' ? 'wss://' : 'ws://';
+  const ws = new window.WebSocket(protocol + host + '/chat') || {}
 
   // If the connection is successfully opened, we log to the console
   ws.onopen = () => {
