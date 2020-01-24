@@ -1,0 +1,24 @@
+{
+  "files": {
+    "main.css": "/roar-social-network/static/css/main.4737ee2a.chunk.css",
+    "main.js": "/roar-social-network/static/js/main.18e1043a.chunk.js",
+    "main.js.map": "/roar-social-network/static/js/main.18e1043a.chunk.js.map",
+    "runtime-main.js": "/roar-social-network/static/js/runtime-main.13955634.js",
+    "runtime-main.js.map": "/roar-social-network/static/js/runtime-main.13955634.js.map",
+    "static/js/2.57027b51.chunk.js": "/roar-social-network/static/js/2.57027b51.chunk.js",
+    "static/js/2.57027b51.chunk.js.map": "/roar-social-network/static/js/2.57027b51.chunk.js.map",
+    "index.html": "/roar-social-network/index.html",
+    "precache-manifest.98c77d6f1f380aa29404d1670d7c4e73.js": "/roar-social-network/precache-manifest.98c77d6f1f380aa29404d1670d7c4e73.js",
+    "service-worker.js": "/roar-social-network/service-worker.js",
+    "static/css/main.4737ee2a.chunk.css.map": "/roar-social-network/static/css/main.4737ee2a.chunk.css.map",
+    "static/js/2.57027b51.chunk.js.LICENSE": "/roar-social-network/static/js/2.57027b51.chunk.js.LICENSE",
+    "static/media/brandLogo.png": "/roar-social-network/static/media/brandLogo.06abb691.png",
+    "static/media/no-img.png": "/roar-social-network/static/media/no-img.6732bd42.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.13955634.js",
+    "static/js/2.57027b51.chunk.js",
+    "static/css/main.4737ee2a.chunk.css",
+    "static/js/main.18e1043a.chunk.js"
+  ]
+}
