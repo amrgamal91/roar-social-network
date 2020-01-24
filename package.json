@@ -10,6 +10,8 @@
     "@version/react-router-v3": "^1.0.0",
     "axios": "^0.19.0",
     "dayjs": "^1.8.15",
+    "express": "^4.17.1",
+    "express-ws": "^4.0.0",
     "firebase": "^6.3.4",
     "firebaseui": "^4.1.0",
     "gh-pages": "^2.1.1",

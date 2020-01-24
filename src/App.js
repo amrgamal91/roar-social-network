@@ -77,8 +77,8 @@ class App extends Component {
             <div className="container">
               <Switch>
                 <Route exact path="/roar-social-network" component={home} />
-                <AuthRoute exact path="/roar-social-network/login" component={login} />
-                <AuthRoute exact path="/roar-social-network/signup" component={signup} />
+                <AuthRoute exact path="/login" component={login} />
+                <AuthRoute exact path="/signup" component={signup} />
                 <Route exact path="/user/:handle" component={user} />
                 <Route
                   exact
@@ -88,6 +88,7 @@ class App extends Component {
                 {/* <Redirect from="/roar-social-network" exact to="/" /> */}
               </Switch>
             </div>
+           
           </Router>
         </Provider>
       </MuiThemeProvider>

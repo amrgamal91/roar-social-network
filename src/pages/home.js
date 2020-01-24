@@ -7,6 +7,8 @@ import { connect } from "react-redux";
 import { getRoars } from "../redux/actions/dataAction";
 import PropTypes from "prop-types";
 import RoarSkeleton from "../util/RoarSkeleton";
+import ChatBox from '../components/chat/ChatBox';
+import Paper from "@material-ui/core/Paper";
 
 export class home extends Component {
   componentDidMount() {
@@ -27,7 +29,11 @@ export class home extends Component {
         </Grid>
         <Grid item sm={4} xs={12} className="profileSection">
           <Profile />
+          <Paper >
+            <ChatBox/>
+          </Paper>
         </Grid>
+       
       </Grid>
     );
   }

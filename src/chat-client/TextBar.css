@@ -1,0 +1,19 @@
+.textbar {
+    display: flex;
+    align-items: stretch;
+    padding:10px;
+  }
+  
+  .textbar-input {
+    flex-grow: 1;
+    box-sizing: border-box;
+    line-height: 1.2rem;
+  }
+  
+  .textbar-send {
+    /* border: none; */
+    background: #33c9dc;
+    color:white;
+    line-height: 1.2rem;
+    margin: 1px;
+  }
