@@ -19,6 +19,7 @@ export const startWebsocketConnection = () => {
   const protocol=window.location.protocol === 'https:' ? 'wss://' : 'ws://';
   const ws = new window.WebSocket(protocol + host + '/chat') || {}
 
+  console.log("here is the websocket connection  .... :"+protocol + host + '/chat')
   // If the connection is successfully opened, we log to the console
   ws.onopen = () => {
     console.log('opened ws connection')
