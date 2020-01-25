@@ -10,8 +10,14 @@ just download the source code and then run : `npm start`
 - username : user@gmail.com
 - password : 123456
 
+## use websocket chat feature : 
+- run : node chat-server/index.js    //run the the server listening on port 8080
+- run : npm start to run the app , if you are not authenticated user , enter user name to appear on chat
+- open another window on browser and run the app to act as another user.
+
 ## screenshots : 
 ![1.](/screenshots/1.png)
 ![2.](/screenshots/2.png)
 ![3.](/screenshots/3.png)
 ![4.](/screenshots/4.png)
+![5.](/screenshots/5.png)
