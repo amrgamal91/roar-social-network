@@ -24,11 +24,12 @@ import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth";
 
 import apiConfig from "../util/apiConfig";
 
-
+if(!firebase.apps.length){
 firebase.initializeApp({
   apiKey: apiConfig.apiKey,
-  authDomain: apiConfig.authDomain
-});
+  authDomain: apiConfig.authDomain,
+  messagingSenderId: apiConfig.messagingSenderId
+});}
 
 const styles = theme => ({
   ...theme.login

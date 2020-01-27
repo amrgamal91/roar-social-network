@@ -75,6 +75,7 @@ class App extends Component {
           <Router>
             <NavBar />
             <div className="container">
+           
               <Switch>
                 <Route exact path="/roar-social-network" component={home} />
                 <AuthRoute exact path="/login" component={login} />

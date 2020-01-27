@@ -9,6 +9,8 @@ import PropTypes from "prop-types";
 import RoarSkeleton from "../util/RoarSkeleton";
 import ChatBox from '../components/chat/ChatBox';
 import Paper from "@material-ui/core/Paper";
+import { askForPermissioToReceiveNotifications } from '../push-notification';
+import Button from "@material-ui/core/Button";
 
 export class home extends Component {
   componentDidMount() {
@@ -32,8 +34,15 @@ export class home extends Component {
           <Paper >
             <ChatBox/>
           </Paper>
+          
+          <Paper >
+            < Button onClick={askForPermissioToReceiveNotifications} >
+              Click here to receive notifications
+            </Button>
+          </Paper>
+        
         </Grid>
-       
+        
       </Grid>
     );
   }

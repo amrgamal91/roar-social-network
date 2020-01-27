@@ -12,7 +12,7 @@
     "dayjs": "^1.8.15",
     "express": "^4.17.1",
     "express-ws": "^4.0.0",
-    "firebase": "^6.3.4",
+    "firebase": "^6.6.2",
     "firebaseui": "^4.1.0",
     "jwt-decode": "^2.2.0",
     "lodash": "^4.17.15",
