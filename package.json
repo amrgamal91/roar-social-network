@@ -15,7 +15,7 @@
     "firebase": "^6.6.2",
     "firebaseui": "^4.1.0",
     "jwt-decode": "^2.2.0",
-    "lodash": "^4.17.15",
+    "lodash": "^4.17.21",
     "material-ui": "^0.20.2",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
